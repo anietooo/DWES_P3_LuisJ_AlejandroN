@@ -9,7 +9,7 @@ Modelo de Datos (UML de Clases)
 
 Usuario (Usuario): Representa a un usuario registrado en la aplicación.
 Producto (Producto): Representa un componente o accesorio informático en la tienda.
-Pedido (Pedido): Representa una orden de compra que asocia un usuario con los productos    comprados.
+Pedido (Pedido): Representa una orden de compra que asocia un usuario con los productos comprados.
 
 Características de las Clases:
 
