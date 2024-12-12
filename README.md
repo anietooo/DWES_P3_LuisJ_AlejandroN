@@ -24,7 +24,7 @@ Pedido:
         Métodos: crearPedido(), leerPedido(), actualizarPedido().
         
         
-4. Modelo Entidad-Relación
+Modelo Entidad-Relación
 
 Usuarios:
         id (PK)
@@ -48,3 +48,12 @@ DetallePedido (tabla intermedia entre Pedidos y Productos):
         pedidoId (FK -> Pedidos.id)
         productoId (FK -> Productos.id)
         cantidad
+
+
+POO:
+Producto-clase Abstracta
+        -Ordenador
+        -Monitor
+        -Periferico
+Usuario
+Pedido
