@@ -14,7 +14,7 @@ Pedido (Pedido): Representa una orden de compra que asocia un usuario con los pr
 Características de las Clases:
 
 Usuario (clase base):
-        Atributos: id, nombre, email, contraseña (hash).
+        Atributos: nombre, email, contraseña (hash).
         Métodos: registrarUsuario(), iniciarSesion().
 Producto:
         Atributos: id, nombre, descripcion, precio, stock.
@@ -27,9 +27,8 @@ Pedido:
 Modelo Entidad-Relación
 
 Usuarios:
-        id (PK)
         nombre
-        email (único)
+        email (PK)
         contraseña (hash)
 
 Productos:
