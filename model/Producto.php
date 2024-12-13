@@ -1,5 +1,5 @@
 <?php
-class Producto{
+abstract class Producto{
     private int $id;
     private string $nombre;
     private string $descripcion;

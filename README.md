@@ -50,6 +50,41 @@ PedidoProducto:
 
 
 
+UML:
+Usuario
+        -nombre
+        -email
+        -contraseña
+        +registrarUsuario()
+        +iniciarSesion()
+
+Pedido:
+        -id
+        -usuarioId
+        -fecha
+        -productos:List<Producto>
+        +crearPedido()
+        +leerPedido()
+        +actualizarPedido()
+
+Producto (abstract)
+        -id
+        -nombre
+        -descripcion
+        -precio
+        -stock
+        +crearProducto()
+        +actualizarProducto()
+        +eliminarProducto()
+   HIJOS:
+        -Ordenador:
+                -ram
+
+        -Monitor:
+                -hz
+                
+        -Periferico
+
 
 POO:
 Producto-clase Abstracta
