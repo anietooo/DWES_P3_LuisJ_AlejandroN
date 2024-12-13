@@ -53,8 +53,8 @@ PedidoProducto:
 
 POO:
 Producto-clase Abstracta
-        -Ordenador
-        -Monitor
+        -Ordenador-ram
+        -Monitor-hercios
         -Periferico
 Usuario
 Pedido
