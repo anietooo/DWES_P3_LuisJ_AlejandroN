@@ -16,7 +16,6 @@ class Pedido{
         return "Id del pedido: $this->id , UsuarioId: $this->usuarioId , Fecha: $this->fecha";
     }
 
-    
 
     /**
      * Get the value of id
