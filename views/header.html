@@ -16,6 +16,7 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <style>
       .linkHover:hover{
         color: rgb(231, 218, 218) !important;
@@ -30,13 +31,13 @@
       <div class="col-12 col-sm-10 mt-3">
         <ul class="list-unstyled d-flex justify-content-center justify-content-sm-start">
           <li class="fs-4 text-white">
-            <a class="text-decoration-none text-white linkHover" href="#">Inicio</a>
+            <a class="text-decoration-none text-white linkHover" href="#"><i class="fas fa-home"></i>&nbsp;Inicio</a>
           </li>
           <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover" href="#">Sobre nosotros</a>
+            <a class="text-decoration-none text-white linkHover" href="#"><i class="fa-solid fa-address-card"></i>&nbsp;Sobre nosotros</a>
           </li>
           <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover" href="#">Contacto</a>
+            <a class="text-decoration-none text-white linkHover" href="#"><i class="fa-solid fa-phone"></i>&nbsp;Contacto</a>
           </li>
         </ul>
       </div>
@@ -45,13 +46,21 @@
       <div class="col-12 col-sm-2 mt-3">
         <ul class="list-unstyled d-flex justify-content-center justify-content-sm-end">
           <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover" href="/database/usuarioDB.php">Login</a>
+            <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="/database/usuarioDB.php">
+              <i class="fa-solid fa-user me-2"></i>Login
+            </a>
           </li>
+          
           <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover" href="/database/pedidoDB.php">Pedido</a>
+            <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="/database/usuarioDB.php">
+              <i class="fa-solid fa-shop"></i>&nbsp;Pedido
+            </a>
           </li>
+          
           <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover" href="/database/productoDB.php">Producto</a>
+            <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="/database/usuarioDB.php">
+              <i class="fa-brands fa-product-hunt"></i>&nbsp;Producto
+            </a>
           </li>
         </ul>
       </div>
