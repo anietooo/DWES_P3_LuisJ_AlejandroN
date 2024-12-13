@@ -43,6 +43,13 @@ Pedidos:
         usuarioId (FK -> Usuarios.id)
         fecha
 
+PedidoProducto:
+        idPedido (FK) — referencia a la clase Pedido.
+        idProducto (FK) — referencia a la clase Producto.
+        cantidad — para manejar la cantidad de productos en ese pedido.
+
+
+
 
 POO:
 Producto-clase Abstracta
