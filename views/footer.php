@@ -16,25 +16,74 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 </head>
 <body>
     <div class="container-fluid bg-dark text-white">
         <div class="row">
-            <footer class="d-flex justify-content-around">
+            <footer class="d-flex justify-content-around mt-2">
                 <ul class="list-unstyled">
                     <li class="fw-bold">Usuario</li>
-                    <li>Mi cuenta</li>
-                    <li>Mis datos</li>
+                    <li><a class="text-decoration-none text-white" href="#">Mi cuenta</a></li>
+                    <li><a class="text-decoration-none text-white" href="#">Mis datos</a></li>
                 </ul>
                 <ul class="list-unstyled">
                     <li class="fw-bold">Pedido</li>
-                    <li>Rastrear mi pedido</li>
-                    <li>Mis pedidos</li>
+                    <li><a class="text-decoration-none text-white" href="#">Rastrear mi pedido</a></li>
+                    <li><a class="text-decoration-none text-white" href="#">Mis pedidos</a></li>
                 </ul>
                 <ul class="list-unstyled">
                     <li class="fw-bold">Producto</li>
-                    <li>Prodcutos mas comprados</li>
-                    <li>Mis productos guardados</li>
+                    <li><a class="text-decoration-none text-white" href="#">Productos mas comprados</a></li>
+                    <li><a class="text-decoration-none text-white" href="#">Mis productos guardados</a></li>
+                </ul>
+                <ul class="list-unstyled">
+                    <li class="fw-bold">Comunidad</li>
+                    <!--LOGOS-->
+                    <div class="d-flex justify-content-around">
+                        <!--LOGO INSTAGRAM-->
+                        <li>
+                            <a class="text-decoration-none text-white" href="#">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+
+                        <!--LOGO X-->
+                        <li>
+                            <a class="text-decoration-none text-white" href="#">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                        </li>
+
+                        <!--LOGO TIKTOK-->
+                        <li>
+                            <a class="text-decoration-none text-white" href="#">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <!--LOGO INSTAGRAM-->
+                        <li>
+                            <a class="text-decoration-none text-white" href="#">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                        </li>
+
+                        <!--LOGO X-->
+                        <li>
+                            <a class="text-decoration-none text-white" href="#">
+                                <i class="fa-brands fa-telegram"></i>
+                            </a>
+                        </li>
+
+                        <!--LOGO TIKTOK-->
+                        <li>
+                            <a class="text-decoration-none text-white" href="#">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </li>
+                    </div>
                 </ul>
             </footer>
         </div>
