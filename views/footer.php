@@ -17,6 +17,15 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .linkHover:hover{
+        color: rgb(231, 218, 218) !important;
+    }
+    </style>
 </head>
 <body>
     <div class="container-fluid bg-dark text-white">
@@ -24,18 +33,18 @@
             <footer class="d-flex justify-content-around mt-2">
                 <ul class="list-unstyled">
                     <li class="fw-bold">Usuario</li>
-                    <li><a class="text-decoration-none text-white" href="#">Mi cuenta</a></li>
-                    <li><a class="text-decoration-none text-white" href="#">Mis datos</a></li>
+                    <li><a class="text-decoration-none text-white linkHover" href="#">Mi cuenta</a></li>
+                    <li><a class="text-decoration-none text-white linkHover" href="#">Mis datos</a></li>
                 </ul>
                 <ul class="list-unstyled">
-                    <li class="fw-bold">Pedido</li>
-                    <li><a class="text-decoration-none text-white" href="#">Rastrear mi pedido</a></li>
-                    <li><a class="text-decoration-none text-white" href="#">Mis pedidos</a></li>
+                    <li class="fw-bold boldHover">Pedido</li>
+                    <li><a class="text-decoration-none text-white linkHover" href="#">Rastrear mi pedido</a></li>
+                    <li><a class="text-decoration-none text-white linkHover" href="#">Mis pedidos</a></li>
                 </ul>
                 <ul class="list-unstyled">
                     <li class="fw-bold">Producto</li>
-                    <li><a class="text-decoration-none text-white" href="#">Productos mas comprados</a></li>
-                    <li><a class="text-decoration-none text-white" href="#">Mis productos guardados</a></li>
+                    <li><a class="text-decoration-none text-white linkHover" href="#">Productos mas comprados</a></li>
+                    <li><a class="text-decoration-none text-white linkHover" href="#">Mis productos guardados</a></li>
                 </ul>
                 <ul class="list-unstyled">
                     <li class="fw-bold">Comunidad</li>
@@ -43,43 +52,43 @@
                     <div class="d-flex justify-content-around">
                         <!--LOGO INSTAGRAM-->
                         <li>
-                            <a class="text-decoration-none text-white" href="#">
+                            <a class="text-decoration-none text-white linkHover" href="#">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </li>
 
                         <!--LOGO X-->
                         <li>
-                            <a class="text-decoration-none text-white" href="#">
+                            <a class="text-decoration-none text-white linkHover" href="#">
                                 <i class="fa-brands fa-twitter"></i>
                             </a>
                         </li>
 
                         <!--LOGO TIKTOK-->
                         <li>
-                            <a class="text-decoration-none text-white" href="#">
+                            <a class="text-decoration-none text-white linkHover" href="#">
                                 <i class="fa-brands fa-tiktok"></i>
                             </a>
                         </li>
                     </div>
                     <div class="d-flex justify-content-around">
-                        <!--LOGO INSTAGRAM-->
+                        <!--LOGO FACEBOOK-->
                         <li>
-                            <a class="text-decoration-none text-white" href="#">
+                            <a class="text-decoration-none text-white linkHover" href="#">
                                 <i class="fa-brands fa-facebook"></i>
                             </a>
                         </li>
 
-                        <!--LOGO X-->
+                        <!--LOGO TELEGRAM-->
                         <li>
-                            <a class="text-decoration-none text-white" href="#">
+                            <a class="text-decoration-none text-white linkHover" href="#">
                                 <i class="fa-brands fa-telegram"></i>
                             </a>
                         </li>
 
-                        <!--LOGO TIKTOK-->
+                        <!--LOGO YOUTUBE-->
                         <li>
-                            <a class="text-decoration-none text-white" href="#">
+                            <a class="text-decoration-none text-white linkHover" href="#">
                                 <i class="fa-brands fa-youtube"></i>
                             </a>
                         </li>
