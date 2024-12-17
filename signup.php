@@ -8,6 +8,7 @@ $nombre = $email = $contraseña = $contraseña2 = "";
 $nombreErr = $emailErr = $contraseñaErr = $contraseña2Err = "";
 $errores = false;
 include "./database/conexion.php";
+include "./database/usuarioDB.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $nombre = $_POST["nombre"];
@@ -44,6 +45,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION["nombre"] = $nombre;
         $_SESSION["email"] = $email;
         $_SESSION["origen"] = "signup";
+
+        crearTabla();
+        if (!existeUsuario($email)) {
+            header("Location: ./index.php");
+            insertarUsuario($email,$nombre,$contraseña);
+            exit();
+        }else{
+            $emailErr="Ya existe un usuario con ese email";
+        }
     }
 }
 ?>

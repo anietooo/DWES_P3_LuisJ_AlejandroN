@@ -6,8 +6,10 @@ require_once("./views/header.php")
 session_start();
 $email = $contraseña = "";
 $emailErr = $contraseñaErr = "";
+$errorLogin="";
 $errores = false;
 include "./database/conexion.php";
+include "./database/usuarioDB.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST["email"];
@@ -31,6 +33,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 
         $_SESSION["email"] = $email;
+
+        $verificacion=verificarUsuario($email,$contraseña);
+        if ($verificacion>0) {
+            header("Location: ./index.php");
+            exit();
+        }elseif ($verificacion == -1){
+            $errorLogin="No existe este email";
+        }else{
+            $errorLogin="No coincide con la contraseña";
+        }
     }
 }
 ?>
