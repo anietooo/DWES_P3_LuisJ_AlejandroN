@@ -4,22 +4,22 @@ require_once("./views/header.php")
 
 <?php
 session_start();
-$email = $password = "";
-$emailErr = $passwordErr = "";
+$email = $contraseña = "";
+$emailErr = $contraseñaErr = "";
 $errores = false;
 include "./database/conexion.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST["email"];
-    $password = $_POST["password"];
+    $contraseña = $_POST["contraseña"];
 
     if (empty($email)) {
         $emailErr = "Campo obligatorio";
         $errores = true;
     }
 
-    if (empty($password)) {
-        $passwordErr = "Campo obligatorio";
+    if (empty($contraseña)) {
+        $contraseñaErr = "Campo obligatorio";
         $errores = true;
     }
 
@@ -47,20 +47,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         height: 100dvh;
         grid-template-rows: auto 1fr auto;
     }
-
-    form{
-        align-self: center;
-    }
 </style>
 <body>
-    <form action="">
+    <form class="container align-self-center" action="">
         Email: <input type="email" name="email"
         class="<?php if(!empty($emailErr)) echo "error"; ?>"
         value="">
         <label><?php echo $emailErr; ?></label>
         <br><br>
         Contraseña: <input type="password" name="password"
-        class="<?php if(!empty($passwordErr)) echo "error"; ?>"
+        class="<?php if(!empty($contraseñaErr)) echo "error"; ?>"
         value="">
         <br><br>
         <input type="checkbox" name="conectado"> Permanecer conectado

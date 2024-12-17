@@ -4,16 +4,16 @@ require_once("./views/header.php")
 
 <?php
 session_start();
-$nombre = $email = $password = $password2 = "";
-$nombreErr = $emailErr = $passwordErr = $password2Err = "";
+$nombre = $email = $contraseña = $contraseña2 = "";
+$nombreErr = $emailErr = $contraseñaErr = $contraseña2Err = "";
 $errores = false;
 include "./database/conexion.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $nombre = $_POST["nombre"];
     $email = $_POST["email"];
-    $password = $_POST["password"];
-    $password2 = $_POST["password2"];
+    $contraseña = $_POST["contraseña"];
+    $contraseña2 = $_POST["contraseña2"];
 
     if (empty($nombre)) {
         $nombreErr = "Campo obligatorio";
@@ -25,18 +25,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $errores = true;
     }
 
-    if (empty($password)) {
-        $passwordErr = "Campo obligatorio";
+    if (empty($contraseña)) {
+        $contraseñaErr = "Campo obligatorio";
         $errores = true;
     }
 
-    if (empty($password2)) {
-        $password2Err = "Campo obligatorio";
+    if (empty($contraseña2)) {
+        $contraseña2Err = "Campo obligatorio";
         $errores = true;
     }
 
-    if($password != $password2){
-        $passwordErr = "No coinciden";
+    if($contraseña != $contraseña2){
+        $contraseñaErr = "No coinciden";
         $errores = true;
     }
 
@@ -85,11 +85,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         value="">
         <label><?php echo $emailErr; ?></label>
         <br><br>
-        Contraseña: <input type="password" name="password"
+        Contraseña: <input type="password" name="contraseña"
         class="<?php if(!empty($passwordErr)) echo "error"; ?>"
         value="">
         <br><br>
-        Repetir contraseña: <input type="password" name="password2"
+        Repetir contraseña: <input type="password" name="contraseña2"
         class="" value="">
         <br><br>
         <input class="btn btn-primary" type="submit" value="Enviar">
