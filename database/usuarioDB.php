@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * @return bool
+ * @param email
+ * @param nombre
+ * @param contraseña
+ */
 function insertarUsuario($email,$nombre, $contraseña): bool
 {
     $sql = "INSERT INTO Usuario (email,nombre,contraseña) values (?, ?,?)";
@@ -10,6 +15,10 @@ function insertarUsuario($email,$nombre, $contraseña): bool
     return $prepared->execute();
 }
 
+/**
+ * @return bool
+ * @param email
+ */
 function existeUsuario($email): bool
 {
     $sql = "SELECT * FROM Usuario where email = ?";
@@ -24,6 +33,11 @@ function existeUsuario($email): bool
     return false;
 }
 
+/**
+ * @return int
+ * @param email
+ * @param contraseña
+ */
 function verificarUsuario($email, $contraseña): int
 {
     $sql = "SELECT contraseña from Usuario where email = ?";
