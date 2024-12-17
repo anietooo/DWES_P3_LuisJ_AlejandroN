@@ -38,10 +38,10 @@
             <a class="text-decoration-none text-white linkHover" href="#"><i class="fas fa-home"></i>&nbsp;Inicio</a>
           </li>
           <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover" href="#"><i class="fa-solid fa-address-card"></i>&nbsp;Sobre nosotros</a>
+            <a class="text-decoration-none text-white linkHover" href="#"><i class="fa-solid fa-phone"></i>&nbsp;Contacto</a>
           </li>
           <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover" href="#"><i class="fa-solid fa-phone"></i>&nbsp;Contacto</a>
+            <a class="text-decoration-none text-white linkHover" href="/signup.php"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Registrarse</a>
           </li>
         </ul>
       </div>
@@ -50,7 +50,7 @@
       <div class="col-12 col-sm-2 mt-3">
         <ul class="list-unstyled d-flex justify-content-center justify-content-sm-end">
           <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="/database/usuarioDB.php">
+            <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="/login.php">
               <i class="fa-solid fa-user me-2"></i>Login
             </a>
           </li>
