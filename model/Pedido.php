@@ -3,17 +3,19 @@ class Pedido{
     private string $id;
     private string $usuarioId;
     private DateTime $fecha;
+    private array $productos;
 
-    public function __construct($id,$usuarioId,$fecha)
+    public function __construct($id,$usuarioId,$fecha,$productos)
     {
         $this->id = $id;
         $this->usuarioId = $usuarioId;
         $this->fecha = $fecha;
+        $this->productos = $productos;
     }
 
     public function __toString()
     {
-        return "Id del pedido: $this->id , UsuarioId: $this->usuarioId , Fecha: $this->fecha";
+        return "Id del pedido: $this->id , UsuarioId: $this->usuarioId , Fecha: $this->fecha , Productos: $this->productos";
     }
 
 

@@ -16,6 +16,7 @@ class Usuario{
         return "Nombre: $this->nombre , Email: $this->email , Contraseña: $this->password";
     }
 
+
     /**
      * Get the value of nombre
      */ 

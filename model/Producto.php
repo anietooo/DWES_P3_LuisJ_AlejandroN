@@ -20,8 +20,6 @@ abstract class Producto{
         return "Id: $this->id , Nombre: $this->nombre , Descripcion: $this->descripcion , Precio: $this->precio , Stock: $this->stock";
     }
 
-    
-
     /**
      * Get the value of id
      */ 
