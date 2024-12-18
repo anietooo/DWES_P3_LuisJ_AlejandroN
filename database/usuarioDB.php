@@ -6,10 +6,11 @@ function insertarUsuario($u)
     $sql = "INSERT into Usuario (nombre, email, contraseña)
         values (?, ?, ?)";
     $ps = $c->prepare($sql);
-    $ps->bind_param("sss", $nombre, $email, $contraseña);
     $email = $u->getNombre();
     $email = $u->getEmail();
     $contraseña = $u->getPassword();
+    $contraseñaHasheada = password_hash($contraseña,PASSWORD_DEFAULT);
+    $ps->bind_param("sss", $nombre, $email, $contraseñaHasheada);
     $ps->execute();
     $c->close();
 }
