@@ -1,62 +1,30 @@
-<?php
-/**
- * Metodo para insertar un usuario
- * @return bool
- * @param email
- * @param nombre
- * @param contraseña
- */
-function insertarUsuario($email,$nombre, $contraseña): bool
+<?php 
+function insertarUsuario($u)
 {
-    $sql = "INSERT INTO Usuario (email,nombre,contraseña) values (?, ?,?)";
     $c = conectar();
-    $prepared = $c->prepare($sql);
-    $hash = password_hash($contraseña, PASSWORD_DEFAULT);
-    $prepared->bind_param("sss", $email, $contraseña, $hash);
-    return $prepared->execute();
+    crearTabla();
+    $sql = "INSERT into Usuario (nombre, email, contraseña)
+        values (?, ?, ?)";
+    $ps = $c->prepare($sql);
+    $ps->bind_param("sss", $nombre, $email, $contraseña);
+    $email = $u->getNombre();
+    $email = $u->getEmail();
+    $contraseña = $u->getPassword();
+    $ps->execute();
+    $c->close();
 }
 
-/**
- * @return bool
- * @param email
- */
-function existeUsuario($email): bool
+function leerUsuario($id)
 {
-    $sql = "SELECT * FROM Usuario where email = ?";
     $c = conectar();
-    $prepared = $c->prepare($sql);
-    $prepared->bind_param("s", $email);
-    $prepared->execute();
-    $r = $prepared->get_result();
-    if ($r->num_rows > 0) {
-        return true;
-    }
-    return false;
-}
-
-/**
- * @return int
- * @param email
- * @param contraseña
- */
-function verificarUsuario($email, $contraseña): int
-{
-    $sql = "SELECT contraseña from Usuario where email = ?";
-    $c = conectar();
-    $prepared = $c->prepare($sql);
-    $prepared->bind_param("s", $email);
-    $prepared->execute();
-    $r = $prepared->get_result();
-    if ($r->num_rows > 0) {
-        $fila = $r->fetch_assoc();
-        $hash = $fila["contraseña"];
-        if (password_verify($contraseña, $hash)) {
-            return 1;
-        } else {
-            return -2;
-        }
-    } else {
-        return -1;
-    }
+    $sql = "SELECT * FROM Usuario WHERE email = ?";
+    $ps = $c->prepare($sql);
+    $ps->bind_param("s", $email);
+    $ps->execute();
+    $r = $ps->get_result();
+    $r = $r->fetch_assoc();
+    $u = new Usuario($r["nombre"], $r["email"], $r["contraseña"]);
+    $c->close();
+    return $u;
 }
 ?>
