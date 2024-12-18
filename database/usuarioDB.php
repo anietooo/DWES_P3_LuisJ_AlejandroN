@@ -1,5 +1,6 @@
 <?php
 /**
+ * Metodo para insertar un usuario
  * @return bool
  * @param email
  * @param nombre
