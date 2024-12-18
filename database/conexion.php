@@ -2,12 +2,13 @@
 /**
  * FALTA POR HACER
  */
-function conectar():mysqli{
-    $server = "127.0.0.1";
+function conectar(): mysqli
+{
+    $server = "127.0.0.1";  //localhost
     $user = "root";
-    $password = "Sandia4you";
+    $pass = "Sandia4you";
     $dbname = "DWES_P3_LuisJ_AlejandroN";
-    $conexion = new mysqli($server,$user,$password,$dbname);
+    $conexion = new mysqli($server, $user, $pass, $dbname);
     return $conexion;
 }
 
