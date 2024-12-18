@@ -58,18 +58,4 @@ function verificarUsuario($email, $contraseña): int
         return -1;
     }
 }
-
-/**
- * FALTA POR HACER
- */
-function registrarUsuario(){
-        
-}
-
-/**
- * FALTA POR HACER
- */
-function iniciarSesion(){
-
-}
 ?>
