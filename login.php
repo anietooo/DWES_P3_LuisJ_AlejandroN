@@ -61,13 +61,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 </style>
 <body>
-    <form class="container align-self-center" action="">
+    <form class="container align-self-center" action="" method="post">
         Email: <input type="email" name="email"
         class="<?php if(!empty($emailErr)) echo "error"; ?>"
         value="">
         <label><?php echo $emailErr; ?></label>
         <br><br>
-        Contraseña: <input type="password" name="password"
+        Contraseña: <input type="password" name="contraseña"
         class="<?php if(!empty($contraseñaErr)) echo "error"; ?>"
         value="">
         <br><br>

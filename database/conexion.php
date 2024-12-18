@@ -25,6 +25,4 @@ function crearTabla(): bool
     $c = conectar();
     return $c->query($sql);
 }
-
-
 ?>
