@@ -1,4 +1,7 @@
 <?php
+/**
+ * FALTA POR HACER
+ */
 function conectar():mysqli{
     $server = "127.0.0.1";
     $user = "root";
@@ -8,6 +11,9 @@ function conectar():mysqli{
     return $conexion;
 }
 
+/**
+ * FALTA POR HACER
+ */
 function crearTabla(): bool
 {
     $sql = "CREATE TABLE IF NOT EXISTS Usuario (
