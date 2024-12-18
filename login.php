@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $_SESSION["email"] = $email;
 
-        $verificacion=verificarUsuario($email,$contraseña);
+        $verificacion = insertarUsuario($email,$contraseña);
         if ($verificacion>0) {
             header("Location: ./index.php");
             exit();

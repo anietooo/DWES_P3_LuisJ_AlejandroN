@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION["origen"] = "signup";
 
         crearTabla();
-        if (!existeUsuario($email)) {
+        if (!leerUsuario($email)) {
             header("Location: ./index.php");
             insertarUsuario($email,$nombre,$contraseña);
             exit();

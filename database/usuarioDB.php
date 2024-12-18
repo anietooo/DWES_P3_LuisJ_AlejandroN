@@ -1,4 +1,5 @@
-<?php 
+<?php
+include_once "./database/conexion.php";
 function insertarUsuario($u)
 {
     $c = conectar();
