@@ -8,7 +8,7 @@ function insertarUsuario($u)
     $sql = "INSERT into Usuario (nombre, email, contraseña)
         values (?, ?, ?)";
     $ps = $c->prepare($sql);
-    $email = $u->getNombre();
+    $nombre = $u->getNombre();
     $email = $u->getEmail();
     $contraseña = $u->getPassword();
     $contraseñaHasheada = password_hash($contraseña,PASSWORD_DEFAULT);
@@ -17,7 +17,7 @@ function insertarUsuario($u)
     $c->close();
 }
 
-function leerUsuario($id)
+function leerUsuario($email)
 {
     $c = conectar();
     $sql = "SELECT * FROM Usuario WHERE email = ?";
