@@ -1,19 +1,19 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "../DWES_P3_LuisJ_AlejandroN/model/Usuario.php";
-include_once $_SERVER['DOCUMENT_ROOT'] . "../DWES_P3_LuisJ_AlejandroN/database/conexion.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/model/Usuario.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/database/conexion.php";
 
 function insertarUsuario($u)
 {
     $c = conectar();
     crearTabla();
-    $sql = "INSERT into Usuario (email, nombre, contraseña)
+    $sql = "INSERT into Usuario (email, nombre, password)
         values (?, ?, ?)";
     $ps = $c->prepare($sql);
     $email = $u->getEmail();
     $nombre = $u->getNombre();
-    $contraseña = $u->getPassword();
-    $contraseñaHasheada = password_hash($contraseña,PASSWORD_DEFAULT);
-    $ps->bind_param("sss", $email, $nombre, $contraseñaHasheada);
+    $password = $u->getPassword();
+    $passwordHasheada = password_hash($password,PASSWORD_DEFAULT);
+    $ps->bind_param("sss", $email, $nombre, $passwordHasheada);
     $ps->execute();
     $c->close();
 }

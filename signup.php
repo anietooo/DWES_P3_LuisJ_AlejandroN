@@ -4,8 +4,8 @@ require_once("./views/header.php")
 
 <?php
 session_start();
-$nombre = $email = $contraseña = $contraseña2 = "";
-$nombreErr = $emailErr = $contraseñaErr = $contraseña2Err = "";
+$nombre = $email = $password = $password2 = "";
+$nombreErr = $emailErr = $passwordErr = $password2Err = "";
 $errores = false;
 include "./database/conexion.php";
 include "./database/usuarioDB.php";
@@ -13,8 +13,8 @@ include "./database/usuarioDB.php";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $nombre = $_POST["nombre"];
     $email = $_POST["email"];
-    $contraseña = $_POST["contraseña"];
-    $contraseña2 = $_POST["contraseña2"];
+    $password = $_POST["password"];
+    $password2 = $_POST["password2"];
 
     if (empty($nombre)) {
         $nombreErr = "Campo obligatorio";
@@ -26,18 +26,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $errores = true;
     }
 
-    if (empty($contraseña)) {
-        $contraseñaErr = "Campo obligatorio";
+    if (empty($password)) {
+        $passwordErr = "Campo obligatorio";
         $errores = true;
     }
 
-    if (empty($contraseña2)) {
-        $contraseña2Err = "Campo obligatorio";
+    if (empty($password2)) {
+        $password2Err = "Campo obligatorio";
         $errores = true;
     }
 
-    if($contraseña != $contraseña2){
-        $contraseñaErr = "No coinciden";
+    if($password != $password2){
+        $passwordErr = "No coinciden";
         $errores = true;
     }
 
@@ -48,8 +48,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         crearTabla();
         if (!leerUsuario($email)) {
-            header("Location: ./index.php");
-            insertarUsuario($email,$nombre,$contraseña);
+            //header("Location: ./index.php");
+            $u = new Usuario($email,$nombre,$password);
+            insertarUsuario($u);
             exit();
         }else{
             $emailErr="Ya existe un usuario con ese email";
@@ -95,11 +96,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         value="">
         <label><?php echo $emailErr; ?></label>
         <br><br>
-        Contraseña: <input type="password" name="contraseña"
+        Contraseña: <input type="password" name="password"
         class="<?php if(!empty($passwordErr)) echo "error"; ?>"
         value="">
         <br><br>
-        Repetir contraseña: <input type="password" name="contraseña2"
+        Repetir contraseña: <input type="password" name="password2"
         class="" value="">
         <br><br>
         <input class="btn btn-primary" type="submit" value="Enviar">
