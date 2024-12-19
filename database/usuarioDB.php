@@ -5,14 +5,14 @@ function insertarUsuario($u)
 {
     $c = conectar();
     crearTabla();
-    $sql = "INSERT into Usuario (nombre, email, contraseña)
+    $sql = "INSERT into Usuario (email, nombre, contraseña)
         values (?, ?, ?)";
     $ps = $c->prepare($sql);
-    $nombre = $u->getNombre();
     $email = $u->getEmail();
+    $nombre = $u->getNombre();
     $contraseña = $u->getPassword();
     $contraseñaHasheada = password_hash($contraseña,PASSWORD_DEFAULT);
-    $ps->bind_param("sss", $nombre, $email, $contraseñaHasheada);
+    $ps->bind_param("sss", $email, $nombre, $contraseñaHasheada);
     $ps->execute();
     $c->close();
 }
@@ -26,7 +26,7 @@ function leerUsuario($email)
     $ps->execute();
     $r = $ps->get_result();
     $r = $r->fetch_assoc();
-    $u = new Usuario($r["nombre"], $r["email"], $r["password"]);
+    $u = new Usuario($r["email"], $r["nombre"], $r["password"]);
     $c->close();
     return $u;
 }

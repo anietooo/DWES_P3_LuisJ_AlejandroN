@@ -1,14 +1,15 @@
 <?php
 class Usuario{
-    private string $nombre;
     private string $email;
+    private string $nombre;
     private string $password;
 
-    public function __construct($nombre,$email,$password)
+    public function __construct($email,$nombre,$password)
     {
-        $this->nombre = $nombre;
         $this->email = $email;
+        $this->nombre = $nombre;
         $this->password = $password;
+
     }
 
     public function __toString()
@@ -17,25 +18,7 @@ class Usuario{
     }
 
 
-    /**
-     * Get the value of nombre
-     */ 
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-
-    /**
-     * Set the value of nombre
-     *
-     * @return  self
-     */ 
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
+    
 
     /**
      * Get the value of email
@@ -53,6 +36,26 @@ class Usuario{
     public function setEmail($email)
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nombre
+     */ 
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set the value of nombre
+     *
+     * @return  self
+     */ 
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
 
         return $this;
     }
