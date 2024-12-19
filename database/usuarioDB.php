@@ -1,5 +1,6 @@
 <?php
 include_once "./database/conexion.php";
+include_once "./model/Usuario.php";
 function insertarUsuario($u)
 {
     $c = conectar();
@@ -25,7 +26,7 @@ function leerUsuario($id)
     $ps->execute();
     $r = $ps->get_result();
     $r = $r->fetch_assoc();
-    $u = new Usuario($r["nombre"], $r["email"], $r["contraseña"]);
+    $u = new Usuario($r["nombre"], $r["email"], $r["password"]);
     $c->close();
     return $u;
 }

@@ -84,7 +84,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 </style>
 <body>
-    <form class="container align-self-center" action="" method="POST">
+    <form class="container align-self-center" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         Nombre: <input type="text" name="nombre"
         class="<?php if(!empty($nombreErr)) echo "error"; ?>"
         value="">
