@@ -4,8 +4,8 @@ require_once("./views/header.php")
 
 <?php
 session_start();
-$email = $contraseña = "";
-$emailErr = $contraseñaErr = "";
+$email = $password = "";
+$emailErr = $passwordErr = "";
 $errorLogin="";
 $errores = false;
 include "./database/conexion.php";
@@ -13,15 +13,15 @@ include "./database/usuarioDB.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST["email"];
-    $contraseña = $_POST["contraseña"];
+    $password = $_POST["password"];
 
     if (empty($email)) {
         $emailErr = "Campo obligatorio";
         $errores = true;
     }
 
-    if (empty($contraseña)) {
-        $contraseñaErr = "Campo obligatorio";
+    if (empty($password)) {
+        $passwordErr = "Campo obligatorio";
         $errores = true;
     }
 
@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $_SESSION["email"] = $email;
 
-        $verificacion = insertarUsuario($email,$contraseña);
+        $verificacion = comprobacionLogin($email,$password);
         if ($verificacion>0) {
             header("Location: ./index.php");
             exit();
@@ -67,8 +67,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         value="">
         <label><?php echo $emailErr; ?></label>
         <br><br>
-        Contraseña: <input type="password" name="contraseña"
-        class="<?php if(!empty($contraseñaErr)) echo "error"; ?>"
+        Contraseña: <input type="password" name="password"
+        class="<?php if(!empty($passwordErr)) echo "error"; ?>"
         value="">
         <br><br>
         <input type="checkbox" name="conectado"> Permanecer conectado

@@ -18,20 +18,38 @@ function insertarUsuario($u)
     $c->close();
 }
 
-function leerUsuario($email)
-{
+function leerUsuario($email){
     $c = conectar();
     $sql = "SELECT * FROM Usuario WHERE email = ?";
+    $ps = $c->prepare($sql);
+    $ps->bind_param("s",$email);
+    $ps->execute();
+    $r = $ps->get_result();
+    if($r && $row = $r->fetch_assoc()){
+        return new Usuario($row['email'], $row['nombre'], $row['password']);
+    }
+    return null;
+}
+
+function comprobacionLogin($email,$password)
+{
+    $sql = "SELECT * FROM Usuario WHERE email = ?";
+    $c = conectar();
     $ps = $c->prepare($sql);
     $ps->bind_param("s", $email);
     $ps->execute();
     $r = $ps->get_result();
 
-    if ($r && $row = $r->fetch_assoc()) {
-        return new Usuario($row['email'], $row['nombre'], $row['password']);
+    if($r->num_rows > 0){
+        $fila = $r->fetch_assoc();
+        $hash = $fila["password"];
+        if(password_verify($password,$hash)){
+            return 1;
+        } else{
+            return -2;
+        }
+    } else{
+        return -1;
     }
-
-    return null;
-  
 }
 ?>
