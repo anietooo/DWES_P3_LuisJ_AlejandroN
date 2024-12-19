@@ -1,6 +1,7 @@
 <?php
-include_once "./database/conexion.php";
-include_once "./model/Usuario.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "../DWES_P3_LuisJ_AlejandroN/model/Usuario.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "../DWES_P3_LuisJ_AlejandroN/database/conexion.php";
+
 function insertarUsuario($u)
 {
     $c = conectar();
@@ -25,9 +26,12 @@ function leerUsuario($email)
     $ps->bind_param("s", $email);
     $ps->execute();
     $r = $ps->get_result();
-    $r = $r->fetch_assoc();
-    $u = new Usuario($r["email"], $r["nombre"], $r["password"]);
-    $c->close();
-    return $u;
+
+    if ($r && $row = $r->fetch_assoc()) {
+        return new Usuario($row['email'], $row['nombre'], $row['password']);
+    }
+
+    return null;
+  
 }
 ?>
