@@ -12,16 +12,16 @@ include "./database/conexion.php";
 include "./database/usuarioDB.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+    $email = securizar( $_POST["email"]);
+    $password = securizar($_POST["password"]);
 
     if (empty($email)) {
         $emailErr = "Campo obligatorio";
         $errores = true;
     }
 
-    if (empty($password)) {
-        $passwordErr = "Campo obligatorio";
+    if (empty($password) || strlen($password)<5) {
+        $passwordErr = "Campo obligatorio , la contraseña tiene que tener mas de 5 Caracteres";
         $errores = true;
     }
 
@@ -44,6 +44,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $errorLogin="No coincide con la contraseña";
         }
     }
+}else{
+    $email = '';
 }
 ?>
 <!DOCTYPE html>
@@ -64,12 +66,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <form class="container align-self-center" action="" method="post">
         Email: <input type="email" name="email"
         class="<?php if(!empty($emailErr)) echo "error"; ?>"
-        value="">
+        value="<?php echo htmlspecialchars($email); ?>">
         <label><?php echo $emailErr; ?></label>
         <br><br>
         Contraseña: <input type="password" name="password"
         class="<?php if(!empty($passwordErr)) echo "error"; ?>"
         value="">
+        <label><?php echo $passwordErr; ?></label>
         <br><br>
         <input type="checkbox" name="conectado"> Permanecer conectado
         <br><br>

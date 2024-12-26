@@ -11,10 +11,10 @@ include "./database/conexion.php";
 include "./database/usuarioDB.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $nombre = $_POST["nombre"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $password2 = $_POST["password2"];
+    $nombre = securizar($_POST["nombre"]);
+    $email = securizar($_POST["email"]);
+    $password =securizar($_POST["password"]);
+    $password2 =securizar($_POST["password2"]);
 
     if (empty($nombre)) {
         $nombreErr = "Campo obligatorio";
@@ -26,8 +26,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $errores = true;
     }
 
-    if (empty($password)) {
-        $passwordErr = "Campo obligatorio";
+    if (empty($password) || strlen($password)<5) {
+        $passwordErr = "Campo obligatorio , la contraseña debe tener mas de 5 Caracteres";
         $errores = true;
     }
 
@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         crearTabla();
         if (!leerUsuario($email)) {
-            //header("Location: ./index.php");
+            header("Location: ./index.php");
             $u = new Usuario($email,$nombre,$password);
             insertarUsuario($u);
             exit();
@@ -56,6 +56,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $emailErr="Ya existe un usuario con ese email";
         }
     }
+}else{
+    $nombre = '';
+    $email = '';
 }
 ?>
 <!DOCTYPE html>
@@ -86,22 +89,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </style>
 <body>
     <form class="container align-self-center" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-        Nombre: <input type="text" name="nombre"
+        Nombre:* <input type="text" name="nombre"
         class="<?php if(!empty($nombreErr)) echo "error"; ?>"
-        value="">
+        value="<?php echo htmlspecialchars($nombre); ?>">
         <label><?php echo $nombreErr; ?></label>
         <br><br>
-        Email: <input type="email" name="email"
+        Email:* <input type="email" name="email"
         class="<?php if(!empty($emailErr)) echo "error"; ?>"
-        value="">
+        value="<?php echo htmlspecialchars($email); ?>">
         <label><?php echo $emailErr; ?></label>
         <br><br>
-        Contraseña: <input type="password" name="password"
+        Contraseña:* <input type="password" name="password"
         class="<?php if(!empty($passwordErr)) echo "error"; ?>"
         value="">
+        <label><?php echo $passwordErr; ?></label>
         <br><br>
-        Repetir contraseña: <input type="password" name="password2"
+        Repetir contraseña:* <input type="password" name="password2"
         class="" value="">
+        <label><?php echo $passwordErr; ?></label>
         <br><br>
         <input class="btn btn-primary" type="submit" value="Enviar">
         <input class="btn btn-secondary" type="reset" value="Limpiar formulario">

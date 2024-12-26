@@ -6,7 +6,7 @@ function conectar(): mysqli
 {
     $server = "127.0.0.1";  //localhost
     $user = "root";
-    $pass = "Sandia4you";
+    $pass = "root";
     $dbname = "DWES_P3_LuisJ_AlejandroN";
     $conexion = new mysqli($server, $user, $pass, $dbname);
 
@@ -34,6 +34,13 @@ function crearTabla()
     
     // Cerrar la conexión
     $c->close();
+}
+
+function securizar($datos): string {
+    $datos = trim($datos);
+    $datos = stripslashes($datos);
+    $datos = htmlspecialchars($datos);
+    return $datos;
 }
 
 
