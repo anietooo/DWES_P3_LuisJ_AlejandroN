@@ -4,7 +4,7 @@ USE DWES_P3_LuisJ_AlejandroN;
 CREATE TABLE Usuario (
     email VARCHAR(255) PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    contraseña VARCHAR(255) NOT NULL
+    password1 VARCHAR(255) NOT NULL
 );
 
 

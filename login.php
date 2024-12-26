@@ -4,8 +4,8 @@ require_once("./views/header.php")
 
 <?php
 session_start();
-$email = $password = "";
-$emailErr = $passwordErr = "";
+$email = $password1 = "";
+$emailErr = $password1Err = "";
 $errorLogin="";
 $errores = false;
 include "./database/conexion.php";
@@ -13,15 +13,15 @@ include "./database/usuarioDB.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = securizar( $_POST["email"]);
-    $password = securizar($_POST["password"]);
+    $password = securizar($_POST["password1"]);
 
     if (empty($email)) {
         $emailErr = "Campo obligatorio";
         $errores = true;
     }
 
-    if (empty($password) || strlen($password)<5) {
-        $passwordErr = "Campo obligatorio , la contraseña tiene que tener mas de 5 Caracteres";
+    if (empty($password1) || strlen($password1)<5) {
+        $password1Err = "Campo obligatorio , la contraseña tiene que tener mas de 5 Caracteres";
         $errores = true;
     }
 
@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $_SESSION["email"] = $email;
 
-        $verificacion = comprobacionLogin($email,$password);
+        $verificacion = comprobacionLogin($email,$password1);
         if ($verificacion>0) {
             header("Location: ./index.php");
             exit();
@@ -69,10 +69,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         value="<?php echo htmlspecialchars($email); ?>">
         <label><?php echo $emailErr; ?></label>
         <br><br>
-        Contraseña: <input type="password" name="password"
-        class="<?php if(!empty($passwordErr)) echo "error"; ?>"
+        Contraseña: <input type="password" name="password1"
+        class="<?php if(!empty($password1Err)) echo "error"; ?>"
         value="">
-        <label><?php echo $passwordErr; ?></label>
+        <label><?php echo $password1Err; ?></label>
         <br><br>
         <input type="checkbox" name="conectado"> Permanecer conectado
         <br><br>

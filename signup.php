@@ -1,11 +1,14 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once("./views/header.php")
 ?>
 
 <?php
 session_start();
-$nombre = $email = $password = $password2 = "";
-$nombreErr = $emailErr = $passwordErr = $password2Err = "";
+$nombre = $email = $password1 = $password2 = "";
+$nombreErr = $emailErr = $password1Err = $password2Err = "";
 $errores = false;
 include "./database/conexion.php";
 include "./database/usuarioDB.php";
@@ -13,7 +16,7 @@ include "./database/usuarioDB.php";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $nombre = securizar($_POST["nombre"]);
     $email = securizar($_POST["email"]);
-    $password =securizar($_POST["password"]);
+    $password1 =securizar($_POST["password1"]);
     $password2 =securizar($_POST["password2"]);
 
     if (empty($nombre)) {
@@ -26,8 +29,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $errores = true;
     }
 
-    if (empty($password) || strlen($password)<5) {
-        $passwordErr = "Campo obligatorio , la contraseña debe tener mas de 5 Caracteres";
+    if (empty($password1) || strlen($password1)<5) {
+        $password1Err = "Campo obligatorio , la contraseña debe tener mas de 5 Caracteres";
         $errores = true;
     }
 
@@ -36,8 +39,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $errores = true;
     }
 
-    if($password != $password2){
-        $passwordErr = "No coinciden";
+    if($password1 != $password2){
+        $password1Err = "No coinciden";
         $errores = true;
     }
 
@@ -49,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         crearTabla();
         if (!leerUsuario($email)) {
             header("Location: ./index.php");
-            $u = new Usuario($email,$nombre,$password);
+            $u = new Usuario($email,$nombre,$password1);
             insertarUsuario($u);
             exit();
         }else{
@@ -99,14 +102,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         value="<?php echo htmlspecialchars($email); ?>">
         <label><?php echo $emailErr; ?></label>
         <br><br>
-        Contraseña:* <input type="password" name="password"
-        class="<?php if(!empty($passwordErr)) echo "error"; ?>"
+        Contraseña:* <input type="password" name="password1"
+        class="<?php if(!empty($password1Err)) echo "error"; ?>"
         value="">
-        <label><?php echo $passwordErr; ?></label>
+        <label><?php echo $password1Err; ?></label>
         <br><br>
         Repetir contraseña:* <input type="password" name="password2"
         class="" value="">
-        <label><?php echo $passwordErr; ?></label>
+        <label><?php echo $password1Err; ?></label>
         <br><br>
         <input class="btn btn-primary" type="submit" value="Enviar">
         <input class="btn btn-secondary" type="reset" value="Limpiar formulario">
