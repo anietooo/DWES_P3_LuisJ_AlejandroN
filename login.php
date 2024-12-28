@@ -13,7 +13,7 @@ include "./database/usuarioDB.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = securizar( $_POST["email"]);
-    $password = securizar($_POST["password1"]);
+    $password1 = securizar($_POST["password1"]);
 
     if (empty($email)) {
         $emailErr = "Campo obligatorio";
@@ -39,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             header("Location: ./index.php");
             exit();
         }elseif ($verificacion == -1){
-            $errorLogin="No existe este email";
+            $errorLogin="No existe el email";
         }else{
             $errorLogin="No coincide con la contraseña";
         }
@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 </style>
 <body>
-    <form class="container align-self-center" action="" method="post">
+    <form class="container align-self-center" action="login.php" method="post" >
         Email: <input type="email" name="email"
         class="<?php if(!empty($emailErr)) echo "error"; ?>"
         value="<?php echo htmlspecialchars($email); ?>">
@@ -74,8 +74,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         value="">
         <label><?php echo $password1Err; ?></label>
         <br><br>
+        <label><?php echo $errorLogin; ?></label>
+        <br><br>
         <input type="checkbox" name="conectado"> Permanecer conectado
         <br><br>
+        
 
         <input type="submit" value="Enviar">
         <input type="reset" value="Limpiar formulario">

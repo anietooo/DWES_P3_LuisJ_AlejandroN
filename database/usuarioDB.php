@@ -42,7 +42,7 @@ function comprobacionLogin($email,$password1)
 
     if($r->num_rows > 0){
         $fila = $r->fetch_assoc();
-        $hash = $fila["password"];
+        $hash = $fila["password1"];
         if(password_verify($password1,$hash)){
             return 1;
         } else{
