@@ -33,7 +33,7 @@ function leerProducto(){
 /**
  * FALTA POR HACER
  */
-function leerProductoCriterio($id)
+function leerProductoOrdenador($id)
 {
     $c = conectar();
     $sql = "SELECT  nombre, descripcion, precio, stock FROM Producto WHERE id = ?";
@@ -42,7 +42,21 @@ function leerProductoCriterio($id)
     $ps->execute();
     $r = $ps->get_result();
     $r = $r->fetch_assoc();
-    $p = new Producto($r["id"], $r["nombre"], $r["descripcion"], $r["precio"], $r["stock"]);
+    $p = new Ordenador($r["ram"], $r["id"], $r["nombre"], $r["descripcion"], $r["precio"], $r["stock"]);
+    $c->close();
+    return $p;
+}
+
+function leerProductoMonitor($id)
+{
+    $c = conectar();
+    $sql = "SELECT  nombre, descripcion, precio, stock FROM Producto WHERE id = ?";
+    $ps = $c->prepare($sql);
+    $ps->bind_param("i", $id);
+    $ps->execute();
+    $r = $ps->get_result();
+    $r = $r->fetch_assoc();
+    $p = new Monitor($r["hz"], $r["id"], $r["nombre"], $r["descripcion"], $r["precio"], $r["stock"]);
     $c->close();
     return $p;
 }
