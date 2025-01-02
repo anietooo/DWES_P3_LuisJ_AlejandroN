@@ -57,13 +57,13 @@
           </li>
           
           <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="/database/usuarioDB.php">
+            <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="./PaginaPedido.php">
               <i class="fa-solid fa-shop"></i>&nbsp;Pedido
             </a>
           </li>
           
           <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="/database/usuarioDB.php">
+            <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="./PaginaProducto.php">
               <i class="fa-brands fa-product-hunt"></i>&nbsp;Producto
             </a>
           </li>

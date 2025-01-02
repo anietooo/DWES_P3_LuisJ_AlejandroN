@@ -11,7 +11,7 @@ require_once("./views/header.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de registro</title>
+    <title>Pagina Producto</title>
 </head>
 <style>
     body {
