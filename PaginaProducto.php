@@ -19,8 +19,10 @@ require_once("./views/header.php");
         height: 100dvh;
         grid-template-rows: auto 1fr auto;
     }
+
     iframe {
-        display: none; /* Oculta el iframe */
+        display: none;
+        /* Oculta el iframe */
     }
 </style>
 
@@ -44,14 +46,33 @@ require_once("./views/header.php");
             <?php
             $productos = leerProducto();
             foreach ($productos as $producto) {
+                // Define la URL de la imagen para cada producto
+                $imagenUrl = "";
+                switch ($producto['id']) {
+                    case 1:
+                        $imagenUrl = "./bus-stop.png";
+                        break;
+                    case 2:
+                        $imagenUrl = "ruta/a/imagen2.jpg";
+                        break;
+                    case 3:
+                        $imagenUrl = "ruta/a/imagen3.jpg";
+                        break;
+                        // Añade más casos según sea necesario
+                    default:
+                        $imagenUrl = "ruta/a/imagen_default.jpg";
+                        break;
+                }
+
                 echo '<div class="col-md-4">';
                 echo '<div class="card mb-4">';
+                echo '<img src="' . $imagenUrl . '" class="card-img-top" alt="' . $producto['nombre'] . '">'; // Añadir imagen
                 echo '<div class="card-body">';
                 echo '<h5 class="card-title">' . $producto['nombre'] . '</h5>';
                 echo '<p class="card-text">' . $producto['descripcion'] . '</p>';
                 echo '<p class="card-text">Precio: ' . $producto['precio'] . '€</p>';
                 echo '<p class="card-text">Stock: ' . ($producto['stock'] ? "Disponible" : "No disponible") . '</p>'; // Mostrar el mensaje de stock
-                echo '<form action="PaginaPedido.php" method="post" target="hidden_iframe">'; // Formulario para añadir productos
+                echo '<form action="PaginaPedido.php" method="post" target="hidden_iframe">';
                 echo '<input type="hidden" name="id" value="' . $producto['id'] . '">';
                 echo '<input type="hidden" name="nombre" value="' . $producto['nombre'] . '">';
                 echo '<input type="hidden" name="descripcion" value="' . $producto['descripcion'] . '">';
