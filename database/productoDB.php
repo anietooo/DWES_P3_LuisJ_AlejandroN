@@ -10,7 +10,7 @@ function insertarProducto($producto): bool
     crearTabla();
     $sql = "INSERT INTO Producto (id,nombre, descripcion,precio,stock) values (?, ?, ?, ?, ?)";
     $prepared = $c->prepare($sql);
-    $prepared->bind_param("issfi", $id, $nombre, $descripcion, $precio, $stock);
+    $prepared->bind_param("issii", $id, $nombre, $descripcion, $precio, $stock);
     $id = $producto->getId();
     $nombre = $producto->getNombre();
     $descripcion = $producto->getDescripcion();
@@ -69,7 +69,7 @@ function actualizarProducto($p)
     $c = conectar();
     $sql = "UPDATE Producto SET id = ?, nombre = ?, descripcion = ?, precio = ? , stock = ? WHERE id = ?";
     $ps = $c->prepare($sql);
-    $ps->bind_param("issfi", $id, $nombre, $descripcion, $precio, $stock);
+    $ps->bind_param("issii", $id, $nombre, $descripcion, $precio, $stock);
     $id = $p->getId();
     $nombre = $p->getNombre();
     $descripcion = $p->getDescripcion();

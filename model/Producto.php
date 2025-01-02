@@ -3,7 +3,7 @@ abstract class Producto{
     private int $id;
     private string $nombre;
     private string $descripcion;
-    private string $precio;
+    private int $precio;
     private bool $stock;
 
     public function __construct($id,$nombre,$descripcion,$precio,$stock)
