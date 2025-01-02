@@ -7,18 +7,23 @@ require_once("./views/header.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de registro</title>
 </head>
 <style>
-    body{
+    body {
         display: grid;
         height: 100dvh;
         grid-template-rows: auto 1fr auto;
     }
+    iframe {
+        display: none; /* Oculta el iframe */
+    }
 </style>
+
 <body>
     <?php
     // insertarProducto(new Ordenador(8, 1, "HP EliteDesk 800 G1", "Potente productividad:Esta Ordenador Portátil con Win 11 de 14 pulgadas está equipada con el rendimiento del procesador", 500, 100));
@@ -32,10 +37,38 @@ require_once("./views/header.php");
     // insertarProducto(new Periferico("Raton", "Razer", 7, "DeathAdder Essential", "Gran resistencia en un ratón de juegos diseñado para durar: El Razer DeathAdder Essential cuenta con una gran durabilidad para mantener un alto rendimiento de calidad que aguante las intensas sesiones de juego, sus 5 botones Hyperesponse se han probado en el laboratorio para asegurar una durabilidad de hasta 10 millones de clics para asegurar que el Razer DeathAdder Essential es el ratón más resistente", 70, 55));
     // insertarProducto(new Periferico("Teclado", " Corsair", 8, "K70 RGB PRO", "La leyenda continúa: El K70 RGB PRO conserva los elementos icónicos del galardonado K70 RGB con una estructura de aluminio duradera, interruptores de teclas mecánicos CHERRY MX y retroiluminación RGB.", 70, 55));
     // insertarProducto(new Periferico("Teclado", "Logitech", 9, "G413 TKL", "Que tus habilidades gaming pasen a otro nivel: Logitech G413 TKL SE es un teclado con diez teclas menos con funciones para gaming con la resistencia y el rendimiento necesarios para competir", 65, 105));
-
-    
     ?>
+
+    <div class="container mt-5">
+        <div class="row">
+            <?php
+            $productos = leerProducto();
+            foreach ($productos as $producto) {
+                echo '<div class="col-md-4">';
+                echo '<div class="card mb-4">';
+                echo '<div class="card-body">';
+                echo '<h5 class="card-title">' . $producto['nombre'] . '</h5>';
+                echo '<p class="card-text">' . $producto['descripcion'] . '</p>';
+                echo '<p class="card-text">Precio: ' . $producto['precio'] . '€</p>';
+                echo '<p class="card-text">Stock: ' . ($producto['stock'] ? "Disponible" : "No disponible") . '</p>'; // Mostrar el mensaje de stock
+                echo '<form action="PaginaPedido.php" method="post" target="hidden_iframe">'; // Formulario para añadir productos
+                echo '<input type="hidden" name="id" value="' . $producto['id'] . '">';
+                echo '<input type="hidden" name="nombre" value="' . $producto['nombre'] . '">';
+                echo '<input type="hidden" name="descripcion" value="' . $producto['descripcion'] . '">';
+                echo '<input type="hidden" name="precio" value="' . $producto['precio'] . '">';
+                echo '<input type="hidden" name="stock" value="' . $producto['stock'] . '">';
+                echo '<button type="submit" class="btn btn-primary">Añadir producto</button>';
+                echo '</form>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            ?>
+        </div>
+    </div>
+    <iframe name="hidden_iframe"></iframe> <!-- Iframe oculto -->
 </body>
+
 </html>
 <?php
 require_once("./views/footer.php");

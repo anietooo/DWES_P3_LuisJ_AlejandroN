@@ -17,7 +17,7 @@ abstract class Producto{
 
     public function __toString()
     {
-        return "Id: $this->id , Nombre: $this->nombre , Descripcion: $this->descripcion , Precio: $this->precio , Stock: $this->stock";
+        return "Id: $this->id , Nombre: $this->nombre , Descripcion: $this->descripcion , Precio: $this->precio ,  Stock: " . ($this->stock ? "Disponible" : "No disponible");
     }
 
     /**
@@ -105,7 +105,7 @@ abstract class Producto{
      */ 
     public function getStock()
     {
-        return $this->stock;
+        return $this->stock ? "Disponible" : "No disponible";
     }
 
     /**
