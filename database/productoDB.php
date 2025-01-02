@@ -36,7 +36,7 @@ function leerProducto(){
 function leerProductoCriterio($id)
 {
     $c = conectar();
-    $sql = "SELECT * FROM Producto WHERE id = ?";
+    $sql = "SELECT  nombre, descripcion, precio, stock FROM Producto WHERE id = ?";
     $ps = $c->prepare($sql);
     $ps->bind_param("i", $id);
     $ps->execute();
