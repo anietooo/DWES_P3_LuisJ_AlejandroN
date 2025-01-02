@@ -1,7 +1,9 @@
-FECHA de ToString() y array en ToString
+SIGUIENTE DIA:
 
----
-return "Id del pedido: " . $this->getId() . " , UsuarioId: " . $this->getUsuarioId() . " , Fecha: " . $this->getFecha() . " , Productos: " . implode(", ", $this->getProductos())
+Pagina de pedido
+Realizar el index
+Diseño de la pagina
+Agregar JS
 
 
 CREATE DATABASE DWES_P3_LuisJ_AlejandroN;
