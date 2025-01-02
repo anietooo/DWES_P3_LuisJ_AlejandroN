@@ -1,3 +1,9 @@
+FECHA de ToString() y array en ToString
+
+---
+return "Id del pedido: " . $this->getId() . " , UsuarioId: " . $this->getUsuarioId() . " , Fecha: " . $this->getFecha() . " , Productos: " . implode(", ", $this->getProductos())
+
+
 CREATE DATABASE DWES_P3_LuisJ_AlejandroN;
 USE DWES_P3_LuisJ_AlejandroN;
 

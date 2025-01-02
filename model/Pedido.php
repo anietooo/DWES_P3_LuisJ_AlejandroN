@@ -13,9 +13,9 @@ class Pedido{
         $this->productos = $productos;
     }
 
-    public function __toString()
-    {
-        return "Id del pedido: $this->id , UsuarioId: $this->usuarioId , Fecha: $this->fecha , Productos: $this->productos";
+    public function __toString() {
+        $fechaFormateada = $this->fecha->format('Y-m-d H:i:s');
+        return "Id del pedido: " . $this->getId() . " , UsuarioId: " . $this->getUsuarioId() . " , Fecha: " . $fechaFormateada . " , Productos: " . implode(", ", $this->productos);
     }
 
 
