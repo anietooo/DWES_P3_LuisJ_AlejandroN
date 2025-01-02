@@ -22,9 +22,9 @@ function insertarProducto($producto): bool
 /**
  * FALTA POR HACER
  */
-function leerProducto(){
+function leerProducto($id){
     $c = conectar();
-    $sql = "SELECT * FROM Producto";
+    $sql = "SELECT nombre, descripcion, precio, stock FROM Product WHERE id = ?";
     $r = $c->query($sql);
     $c->close();
     return $r;
