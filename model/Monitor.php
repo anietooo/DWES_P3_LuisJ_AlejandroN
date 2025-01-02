@@ -2,8 +2,9 @@
 class Monitor extends Producto{
     private int $hz;
 
-    public function __construct($hz)
+    public function __construct($hz,$id, $nombre, $descripcion, $precio, $stock)
     {
+        parent::__construct($id, $nombre, $descripcion, $precio, $stock);
         $this->hz = $hz;
     }
 

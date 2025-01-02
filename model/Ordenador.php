@@ -2,8 +2,9 @@
 class Ordenador extends Producto{
     private int $ram;
 
-    public function __construct($ram)
+    public function __construct($ram,$id, $nombre, $descripcion, $precio, $stock)
     {
+        parent::__construct($id, $nombre, $descripcion, $precio, $stock);
         $this->ram = $ram;
     }
 
