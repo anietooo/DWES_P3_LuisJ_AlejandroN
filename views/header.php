@@ -35,36 +35,30 @@
       <div class="col-12 col-sm-10 mt-3">
         <ul class="list-unstyled d-flex justify-content-center justify-content-sm-start">
           <li class="fs-4 text-white">
-            <a class="text-decoration-none text-white linkHover" href="#"><i class="fas fa-home"></i>&nbsp;Inicio</a>
+            <a class="text-decoration-none text-white linkHover" href="./index.php"><i class="fas fa-home"></i>&nbsp;Inicio</a>
           </li>
-          
+          <li class="fs-4 mx-3 text-white">
+            <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="./PaginaProducto.php">
+              <i class="fa-brands fa-product-hunt"></i>&nbsp;Productos
+            </a>
+          </li>
           <li class="fs-4 mx-3 text-white">
             <a class="text-decoration-none text-white linkHover" href="#"><i class="fa-solid fa-phone"></i>&nbsp;Contacto</a>
-          </li>
-          <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover" href="/signup.php"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Registrarse</a>
           </li>
         </ul>
       </div>
   
-      <!--Lista a la derecha-->
+      <!--Icono de usuario a la derecha-->
       <div class="col-12 col-sm-2 mt-3">
         <ul class="list-unstyled d-flex justify-content-center justify-content-sm-end">
           <li class="fs-4 mx-3 text-white">
             <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="/login.php">
-              <i class="fa-solid fa-user me-2"></i>Login
+              <i class="fa-solid fa-user"></i>
             </a>
           </li>
-          
           <li class="fs-4 mx-3 text-white">
             <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="./PaginaPedido.php">
-              <i class="fa-solid fa-shop"></i>&nbsp;Pedido
-            </a>
-          </li>
-          
-          <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="./PaginaProducto.php">
-              <i class="fa-brands fa-product-hunt"></i>&nbsp;Producto
+              <i class="fa-solid fa-shopping-cart"></i>
             </a>
           </li>
         </ul>
