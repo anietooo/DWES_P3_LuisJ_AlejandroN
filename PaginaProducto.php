@@ -50,15 +50,32 @@ require_once("./views/header.php");
                 $imagenUrl = "";
                 switch ($producto['id']) {
                     case 1:
-                        $imagenUrl = "./bus-stop.png";
+                        $imagenUrl = "./views/img/HPEliteDesk800G1.webp";
                         break;
                     case 2:
-                        $imagenUrl = "ruta/a/imagen2.jpg";
+                        $imagenUrl = "ruta/a/imagen2.webp"; // Poner una foto aqui
                         break;
                     case 3:
-                        $imagenUrl = "ruta/a/imagen3.jpg";
+                        $imagenUrl = "./views/img/NeoPC.webp";
                         break;
-                        // Añade más casos según sea necesario
+                    case 4:
+                        $imagenUrl = "./views/img/ASUSVG27AQ1A.webp";
+                        break;
+                    case 5:
+                        $imagenUrl = "./views/img/LG24GS50F-B.webp";
+                        break;
+                    case 6:
+                        $imagenUrl = "./views/img/BenQZOWIEXL2411P.webp";
+                        break;
+                    case 7:
+                        $imagenUrl = "./views/img/RazerDeathAdderEssential.webp";
+                        break;
+                    case 8:
+                        $imagenUrl = "./views/img/K70RGBPRO.webp";
+                        break;
+                    case 9:
+                        $imagenUrl = "./views/img/G413TKL.webp";
+                        break;
                     default:
                         $imagenUrl = "ruta/a/imagen_default.jpg";
                         break;
