@@ -67,11 +67,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     .bg-gradient-primary {
         background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgb(32, 86, 168) 35%, rgba(0, 212, 255, 1) 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
     }
 </style>
 
 <body>
     <div class="container align-self-center">
+        <div class="row">
+            <div class="col">
+                <nav class="breadcrumb bg-white">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item bg-white"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active bg-white" aria-current="page">
+                            Registro
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center flex-column  text-white bg-gradient-primary">
                 <h1>Identifícate o crea una nueva cuenta<br></h1>
