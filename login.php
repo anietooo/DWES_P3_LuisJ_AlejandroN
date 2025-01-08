@@ -81,9 +81,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col">
                 <nav class="breadcrumb bg-white">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item bg-white"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item bg-white"><a href="./index.php">Inicio</a></li>
                         <li class="breadcrumb-item active bg-white" aria-current="page">
-                            Registro
+                            Iniciar sesión
                         </li>
                     </ol>
                 </nav>
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="row">
             <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center flex-column  text-white bg-gradient-primary">
-                <h1>Identifícate o crea una nueva cuenta<br></h1>
+                <h1>Inicia sesión con tu cuenta de usuario<br></h1>
                 <p>Con tu cuenta de usuario podrás: <br><br> Disfrutar de ofertas exclusivas y personalizadas.<br> Acceder a tu historial de compras. <br>Establecer alertas de disponibilidad y nuevos lanzamientos.Compartir tus listas y configuraciones.</p>
             </div>
             <div class="col-md-6">

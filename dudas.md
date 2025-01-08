@@ -41,3 +41,31 @@ CREATE TABLE PedidoProducto (
 );
 
 SELECT * FROM Usuario;
+
+
+
+<body>
+    <form class="container align-self-center" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        Nombre:* <input type="text" name="nombre"
+        class="<?php if(!empty($nombreErr)) echo "error"; ?>"
+        value="<?php echo htmlspecialchars($nombre); ?>">
+        <label><?php echo $nombreErr; ?></label>
+        <br><br>
+        Email:* <input type="email" name="email"
+        class="<?php if(!empty($emailErr)) echo "error"; ?>"
+        value="<?php echo htmlspecialchars($email); ?>">
+        <label><?php echo $emailErr; ?></label>
+        <br><br>
+        Contraseña:* <input type="password" name="password1"
+        class="<?php if(!empty($password1Err)) echo "error"; ?>"
+        value="">
+        <label><?php echo $password1Err; ?></label>
+        <br><br>
+        Repetir contraseña:* <input type="password" name="password2"
+        class="" value="">
+        <label><?php echo $password1Err; ?></label>
+        <br><br>
+        <input class="btn btn-primary" type="submit" value="Enviar">
+        <input class="btn btn-secondary" type="reset" value="Limpiar formulario">
+    </form>
+</body>
