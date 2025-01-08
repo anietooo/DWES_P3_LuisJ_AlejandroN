@@ -26,25 +26,44 @@ require_once("./views/header.php")
             grid-template-rows: auto 1fr auto;
             margin: 0;
         }
+
+        .carousel-item {
+        transition: transform 0.5s ease-in-out;
+    }
     </style>
 </head>
 <body>
-    <div class="container-fluid mt-5">
+<div class="container-fluid mt-5">
       <div class="row">
         <div class="col-12">
           <nav class="d-flex justify-content-center align-items-center">
-            <img src="./views/img/Banner_Pagina.jpg" alt="" />
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="./views/img/Banner_Pagina.jpg" class="d-block" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="./views/img/Shotout.jpg" class="d-block" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="./views/img/Teclado.png" class="d-block" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
           </nav>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="gallery d-flex justify-content-center align-items-center gap-2">
-            <img src="./views/img/MejoresPortatiles.webp" alt="" style="width: auto; height: 350px" />
-            <img src="./views/img/MejoresPortatiles.webp" alt="" style="width: auto; height: 350px" />
-            <img src="./views/img/MejoresPortatiles.webp" alt="" style="width: auto; height: 350px" />
-            <img src="./views/img/MejoresPortatiles.webp" alt="" style="width: auto; height: 350px" />
-          </div>
         </div>
       </div>
     </div>
