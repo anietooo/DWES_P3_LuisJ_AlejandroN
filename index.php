@@ -29,6 +29,7 @@ require_once("./views/header.php")
 
         .carousel-item {
         transition: transform 0.5s ease-in-out;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .radius{
@@ -37,6 +38,10 @@ require_once("./views/header.php")
 
     .hr-mg{
       margin-top: -50px;
+    }
+
+    .carousel{
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     </style>
 </head>
