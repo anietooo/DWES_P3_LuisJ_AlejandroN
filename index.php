@@ -83,28 +83,28 @@ require_once("./views/header.php")
           <div class="hr-mg gallery d-flex justify-content-center align-items-center">
             <div class=" gap-3 d-flex justify-content-between align-items-center" style="width: 1560px; height: 500px;">
             <div class="bg-info radius" style="width: 300px; height: 250px;">
-                <img src="./views/img/G413TKL.png" alt="" style="width: 200px; height: 150px;">
+                <img src="./views/img/SinFondo/G413TKL.png" alt="" style="width: 200px; height: 150px;">
                 <span class="text-muted">Portatiles</span>
                 <p>Descripcion del producto</p>
                 <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
                 <p class="fw-bold text-danger">549,99 &nbsp;€</p>
               </div>
               <div class="bg-info radius" style="width: 300px; height: 250px;">
-                <img src="./views/img/G413TKL.png" alt="" style="width: 200px; height: 150px;">
+                <img src="./views/img/SinFondo/RazerDeathAdderEssential.png" alt="" style="width: 200px; height: 150px;">
                 <span class="text-muted">Portatiles</span>
                 <p>Descripcion del producto</p>
                 <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
                 <p class="fw-bold text-danger">549,99 &nbsp;€</p>
               </div>
               <div class="bg-info radius" style="width: 300px; height: 250px;">
-                <img src="./views/img/G413TKL.png" alt="" style="width: 200px; height: 150px;">
+                <img src="./views/img/SinFondo/NeoPC.png" alt="" style="width: 200px; height: 150px;">
                 <span class="text-muted">Portatiles</span>
                 <p>Descripcion del producto</p>
                 <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
                 <p class="fw-bold text-danger">549,99 &nbsp;€</p>
               </div>
               <div class="bg-info radius" style="width: 300px; height: 250px;">
-                <img src="./views/img/G413TKL.png" alt="" style="width: 200px; height: 150px;">
+                <img src="./views/img/SinFondo/HPEliteDesk800G1.png" alt="" style="width: 200px; height: 150px;">
                 <span class="text-muted">Portatiles</span>
                 <p>Descripcion del producto</p>
                 <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
