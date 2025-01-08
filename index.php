@@ -20,15 +20,34 @@ require_once("./views/header.php")
       crossorigin="anonymous"
     ></script>
     <style>
-        body{
+        body {
             display: grid;
-            height: 100dvh;
+            height: 100vh;
             grid-template-rows: auto 1fr auto;
+            margin: 0;
         }
     </style>
 </head>
 <body>
-    Esto es Index
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <div class="col-12">
+          <nav class="d-flex justify-content-center align-items-center">
+            <img src="./views/img/Banner_Pagina.jpg" alt="" />
+          </nav>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="gallery d-flex justify-content-center align-items-center gap-2">
+            <img src="./views/img/MejoresPortatiles.webp" alt="" style="width: auto; height: 350px" />
+            <img src="./views/img/MejoresPortatiles.webp" alt="" style="width: auto; height: 350px" />
+            <img src="./views/img/MejoresPortatiles.webp" alt="" style="width: auto; height: 350px" />
+            <img src="./views/img/MejoresPortatiles.webp" alt="" style="width: auto; height: 350px" />
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
 <?php
