@@ -22,13 +22,21 @@ require_once("./views/header.php")
     <style>
         body {
             display: grid;
-            height: 100vh;
+            height: 130vh;
             grid-template-rows: auto 1fr auto;
             margin: 0;
         }
 
         .carousel-item {
         transition: transform 0.5s ease-in-out;
+    }
+
+    .radius{
+      border-radius: 15px;
+    }
+
+    .hr-mg{
+      margin-top: -50px;
     }
     </style>
 </head>
@@ -64,6 +72,47 @@ require_once("./views/header.php")
               </button>
             </div>
           </nav>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-12">
+          <h2 class="text-center">Productos destacados</h2>
+          <p class="text-center">Los productos mas comprados</p>
+          <hr>
+          <div class="hr-mg gallery d-flex justify-content-center align-items-center">
+            <div class=" gap-3 d-flex justify-content-between align-items-center" style="width: 1560px; height: 500px;">
+            <div class="bg-info radius" style="width: 300px; height: 250px;">
+                <img src="./views/img/G413TKL.png" alt="" style="width: 200px; height: 150px;">
+                <span class="text-muted">Portatiles</span>
+                <p>Descripcion del producto</p>
+                <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
+                <p class="fw-bold text-danger">549,99 &nbsp;€</p>
+              </div>
+              <div class="bg-info radius" style="width: 300px; height: 250px;">
+                <img src="./views/img/G413TKL.png" alt="" style="width: 200px; height: 150px;">
+                <span class="text-muted">Portatiles</span>
+                <p>Descripcion del producto</p>
+                <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
+                <p class="fw-bold text-danger">549,99 &nbsp;€</p>
+              </div>
+              <div class="bg-info radius" style="width: 300px; height: 250px;">
+                <img src="./views/img/G413TKL.png" alt="" style="width: 200px; height: 150px;">
+                <span class="text-muted">Portatiles</span>
+                <p>Descripcion del producto</p>
+                <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
+                <p class="fw-bold text-danger">549,99 &nbsp;€</p>
+              </div>
+              <div class="bg-info radius" style="width: 300px; height: 250px;">
+                <img src="./views/img/G413TKL.png" alt="" style="width: 200px; height: 150px;">
+                <span class="text-muted">Portatiles</span>
+                <p>Descripcion del producto</p>
+                <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
+                <p class="fw-bold text-danger">549,99 &nbsp;€</p>
+              </div>
+            </div>
+            
+          </div>
         </div>
       </div>
     </div>
