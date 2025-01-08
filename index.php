@@ -64,7 +64,10 @@ require_once("./views/header.php")
                   <img src="./views/img/Shotout.jpg" class="d-block" alt="...">
                 </div>
                 <div class="carousel-item">
+                  <a href="https://www.youtube.com/watch?v=w_0a1_eqlwg">
                   <img src="./views/img/Teclado.png" class="d-block" alt="...">
+                  </a>
+                  
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
