@@ -1,0 +1,37 @@
+body {
+  display: grid;
+  height: 160vh;
+  grid-template-rows: auto 1fr auto;
+  margin: 0;
+}
+
+.carousel-item {
+  transition: transform 0.5s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.radius {
+  border-radius: 15px;
+}
+
+.hr-mg {
+  margin-top: -50px;
+}
+
+.carousel {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img-container {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  width: 300px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
