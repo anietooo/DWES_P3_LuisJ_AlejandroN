@@ -13,19 +13,38 @@ require_once("./model/Periferico.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina Producto</title>
-</head>
-<style>
-    body {
-        display: grid;
-        height: 150dvh;
-        grid-template-rows: auto 1fr auto;
-    }
+    <style>
+        body {
+            display: grid;
+            height: 150dvh;
+            grid-template-rows: auto 1fr auto;
+        }
 
-    iframe {
-        display: none;
-        /* Oculta el iframe */
-    }
-</style>
+        iframe {
+            display: none;
+            /* Oculta el iframe */
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-item {
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
 
 <body>
     <?php
@@ -43,7 +62,7 @@ require_once("./model/Periferico.php");
     ?>
 
     <div class="container mt-5">
-        <div class="row">
+        <div class="product-grid">
             <?php
             $productos = leerProducto();
             foreach ($productos as $producto) {
@@ -51,55 +70,51 @@ require_once("./model/Periferico.php");
                 $imagenUrl = "";
                 switch ($producto['id']) {
                     case 1:
-                        $imagenUrl = "./views/img/HPEliteDesk800G1.webp";
+                        $imagenUrl = "./views/img/SinFondo/HPEliteDesk800G1.png";
                         break;
                     case 2:
-                        $imagenUrl = "./views/img/Ordenador.png"; // Poner una foto aqui
+                        $imagenUrl = "./views/img/SinFondo/Ordenador.png"; // Poner una foto aqui
                         break;
                     case 3:
-                        $imagenUrl = "./views/img/NeoPC.webp";
+                        $imagenUrl = "./views/img/SinFondo/NeoPC.png";
                         break;
                     case 4:
-                        $imagenUrl = "./views/img/ASUSVG27AQ1A.webp";
+                        $imagenUrl = "./views/img/SinFondo/ASUSVG27AQ1A.png";
                         break;
                     case 5:
-                        $imagenUrl = "./views/img/LG24GS50F-B.webp";
+                        $imagenUrl = "./views/img/SinFondo/LG24GS50F-B.png";
                         break;
                     case 6:
-                        $imagenUrl = "./views/img/BenQZOWIEXL2411P.webp";
+                        $imagenUrl = "./views/img/SinFondo/BenQZOWIEXL2411P.png";
                         break;
                     case 7:
-                        $imagenUrl = "./views/img/RazerDeathAdderEssential.webp";
+                        $imagenUrl = "./views/img/SinFondo/RazerDeathAdderEssential.png";
                         break;
                     case 8:
-                        $imagenUrl = "./views/img/K70RGBPRO.webp";
+                        $imagenUrl = "./views/img/SinFondo/K70RGBPRO.png";
                         break;
                     case 9:
-                        $imagenUrl = "./views/img/G413TKL.webp";
+                        $imagenUrl = "./views/img/SinFondo/G413TKL.png";
                         break;
                     default:
                         $imagenUrl = "ruta/a/imagen_default.jpg";
                         break;
                 }
 
-                echo '<div class="col-md-4">';
-                echo '<div class="card mb-4">';
-                echo '<img src="' . $imagenUrl . '" class="card-img-top" alt="' . $producto['nombre'] . '">'; // Añadir imagen
-                echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $producto['nombre'] . '</h5>';
-                echo '<p class="card-text">' . $producto['descripcion'] . '</p>';
-                echo '<p class="card-text">Precio: ' . $producto['precio'] . '€</p>';
-                echo '<p class="card-text">Stock: ' . ($producto['stock'] ? "Disponible" : "No disponible") . '</p>'; // Mostrar el mensaje de stock
+                echo '<div class="product-item">';
+                echo '<img src="' . $imagenUrl . '" alt="' . $producto['nombre'] . '">';
+                echo '<h3>' . $producto['nombre'] . '</h3>';
+                echo '<p>' . $producto['descripcion'] . '</p>';
+                echo '<p>Precio: ' . $producto['precio'] . '€</p>';
+                echo '<p>Stock: ' . ($producto['stock'] ? "Disponible" : "No disponible") . '</p>'; // Mostrar el mensaje de stock
                 echo '<form action="PaginaPedido.php" method="post" target="hidden_iframe">';
                 echo '<input type="hidden" name="id" value="' . $producto['id'] . '">';
                 echo '<input type="hidden" name="nombre" value="' . $producto['nombre'] . '">';
                 echo '<input type="hidden" name="descripcion" value="' . $producto['descripcion'] . '">';
                 echo '<input type="hidden" name="precio" value="' . $producto['precio'] . '">';
                 echo '<input type="hidden" name="stock" value="' . $producto['stock'] . '">';
-                echo '<button type="submit"  name="add_product" class="btn btn-primary">Añadir producto</button>';
+                echo '<button type="submit" name="add_product" class="btn btn-primary">Añadir producto</button>';
                 echo '</form>';
-                echo '</div>';
-                echo '</div>';
                 echo '</div>';
             }
             ?>
