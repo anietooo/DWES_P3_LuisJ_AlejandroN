@@ -72,7 +72,7 @@ require_once("./views/header.php")
               </div>
               <div class="text-center mt-2" style="width: 100%; height: 200px;">
                 <span class="text-muted">Teclado</span>
-                <p style="word-wrap: break-word;">Que tus habilidades gaming pasen a otro nivel: Logitech G413 TKL SE es un teclado con diez teclas menos con funciones para gaming con la resistencia y el rendimiento necesarios para competir</p>
+                <p style="word-wrap: break-word;">Logitech G413 TKL</p>
                 <span class="text-decoration-line-through text-muted">149,99 &nbsp;€</span>
                 <p class="fw-bold text-danger">109,99 &nbsp;€</p>
                 <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
@@ -84,7 +84,7 @@ require_once("./views/header.php")
               </div>
               <div class="text-center mt-2" style="width: 100%; height: 200px;">
                 <span class="text-muted">Ratón</span>
-                <p style="word-wrap: break-word;">Cuenta con una gran durabilidad para mantener un alto rendimiento de calidad que aguante las intensas sesiones de juego, sus 5 botones Hyperesponse se han probado en el laboratorio para asegurar una durabilidad de hasta 10 millones de clics</p>
+                <p style="word-wrap: break-word;">Razer DeathAdder Essential</p>
                 <span class="text-decoration-line-through text-muted">79,99 &nbsp;€</span>
                 <p class="fw-bold text-danger">49,99 &nbsp;€</p>
                 <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
@@ -96,7 +96,7 @@ require_once("./views/header.php")
               </div>
               <div class="text-center mt-2" style="width: 100%; height: 200px;">
                 <span class="text-muted">Ordenador</span>
-                <p style="word-wrap: break-word;">Equipado con un procesador de ordenador AMD Ryzen 5 4600G que en modo turbo llega a 4.2 GHz, y una memoria RAM de 8 GB con una velocidad de 3200 MHz y con una potente tarjeta grafica Radeon Vega 7.</p>
+                <p style="word-wrap: break-word;">Neo PC</p>
                 <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
                 <p class="fw-bold text-danger">549,99 &nbsp;€</p>
                 <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
