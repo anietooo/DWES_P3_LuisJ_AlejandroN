@@ -53,6 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar_producto'])) 
     $_SESSION['productos'][$email] = array_values($_SESSION['productos'][$email]);
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['vaciar_cesta'])) {
+    // Vaciar la cesta de productos
+    unset($_SESSION['productos'][$email]);
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
     // Insertar el pedido en la base de datos
     $pedido = new Pedido(null, $email, new DateTime(), $_SESSION['productos'][$email]);
@@ -96,7 +101,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
         </div>
         <?php if (isset($_SESSION['productos'][$email]) && count($_SESSION['productos'][$email]) > 0): ?>
             <form action="PaginaPedido.php" method="post">
-                <button type="submit" name="comprar" class="btn btn-success">Comprar</button>
+                <button type="submit" name="comprar" class="btn btn-outline-primary">Comprar</button>
+                <button type="submit" name="vaciar_cesta" class="btn btn-danger">Vaciar Cesta</button>
             </form>
         <?php endif; ?>
     </div>
