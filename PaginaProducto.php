@@ -16,7 +16,7 @@ require_once("./views/header.php");
 <style>
     body {
         display: grid;
-        height: 100dvh;
+        height: 150dvh;
         grid-template-rows: auto 1fr auto;
     }
 
@@ -95,7 +95,7 @@ require_once("./views/header.php");
                 echo '<input type="hidden" name="descripcion" value="' . $producto['descripcion'] . '">';
                 echo '<input type="hidden" name="precio" value="' . $producto['precio'] . '">';
                 echo '<input type="hidden" name="stock" value="' . $producto['stock'] . '">';
-                echo '<button type="submit" class="btn btn-primary">Añadir producto</button>';
+                echo '<button type="submit"  name="add_product" class="btn btn-primary">Añadir producto</button>';
                 echo '</form>';
                 echo '</div>';
                 echo '</div>';
