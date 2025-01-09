@@ -18,7 +18,7 @@ require_once("./views/header.php")
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./views/index.css">
+  <link rel="stylesheet" href="./views/index.css">
 </head>
 
 <body>
@@ -127,6 +127,38 @@ require_once("./views/header.php")
         </div>
       </div>
     </div>
+
+    <div class="row h-25">
+  <div class="col-12">
+    <h2 class="text-center">Por qué comprar?</h2>
+    <div class="d-flex justify-content-center gap-3 mt-5">
+      <div class="bg-customWhite d-flex flex-column align-items-center" style="width: 320px;">
+        <div class="text-center mt-2 d-flex flex-column justify-content-center" style="width: 220px; height: 180px;">
+        <i class="fa-solid fa-rotate-right fa-2x"></i>
+          <p class="fs-5 mt-2">14 días de desistimiento</p>
+        </div>
+      </div>
+      <div class="bg-customWhite d-flex flex-column align-items-center" style="width: 320px;">
+        <div class="text-center mt-2 d-flex flex-column justify-content-center" style="width: 220px; height: 180px;">
+          <i class="fas fa-home fa-2x"></i>
+          <p class="fs-5 mt-2">Envío gratuito</p>
+        </div>
+      </div>
+      <div class="bg-customWhite d-flex flex-column align-items-center" style="width: 320px;">
+        <div class="text-center mt-2 d-flex flex-column justify-content-center" style="width: 220px; height: 180px;">
+        <i class="fa-regular fa-envelope fa-2x"></i>
+          <p class="fs-5 mt-2">Soporte 24/7</p>
+        </div>
+      </div>
+      <div class="bg-customWhite d-flex flex-column align-items-center" style="width: 320px;">
+        <div class="text-center mt-2 d-flex flex-column justify-content-center" style="width: 220px; height: 180px;">
+          <i class="fas fa-phone fa-2x"></i>
+          <p class="fs-5 mt-2">Atención telefonica</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   </div>
 </body>
 

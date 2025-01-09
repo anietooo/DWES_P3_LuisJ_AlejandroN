@@ -1,6 +1,6 @@
 body {
   display: grid;
-  height: 160vh;
+  height: 180vh;
   grid-template-rows: auto 1fr auto;
   margin: 0;
 }
@@ -34,4 +34,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.bg-customWhite{
+  background-color: rgb(241, 236, 236);
 }
