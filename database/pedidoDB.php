@@ -9,19 +9,32 @@ function insertarPedido($pedido): bool
 {
     $c = conectar();
     crearTabla();
-    $sql = "INSERT INTO Pedido (id,usuarioId, fecha) values (?, ?, ?)";
+    $sql = "INSERT INTO Pedido (usuarioId, fecha) VALUES (?, ?)";
     $prepared = $c->prepare($sql);
-    $prepared->bind_param("iii", $id, $usuarioId, $fecha);
-    $id = $pedido->getId();
+    $prepared->bind_param("ss", $usuarioId, $fecha);
     $usuarioId = $pedido->getUsuarioId();
-    $fecha = $pedido->getFecha();
-    return $prepared->execute();
+    $fecha = $pedido->getFecha()->format('Y-m-d H:i:s');
+    $result = $prepared->execute();
+
+    if ($result) {
+        $pedidoId = $c->insert_id;
+        foreach ($pedido->getProductos() as $producto) {
+            $sqlProducto = "INSERT INTO PedidoProducto (idPedido, idProducto) VALUES (?, ?)";
+            $preparedProducto = $c->prepare($sqlProducto);
+            $preparedProducto->bind_param("ii", $pedidoId, $producto['id']);
+            $preparedProducto->execute();
+        }
+    }
+
+    $c->close();
+    return $result;
 }
 
 /**
  * FALTA POR HACER
  */
-function leerPedido(){
+function leerPedido()
+{
     $c = conectar();
     $sql = "SELECT * FROM Pedido";
     $r = $c->query($sql);

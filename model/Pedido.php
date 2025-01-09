@@ -1,11 +1,11 @@
 <?php
 class Pedido{
-    private string $id;
+    private ?int $id;
     private string $usuarioId;
     private DateTime $fecha;
     private array $productos;
 
-    public function __construct($id,$usuarioId,$fecha,$productos)
+    public function __construct(?int $id,$usuarioId,$fecha,$productos)
     {
         $this->id = $id;
         $this->usuarioId = $usuarioId;
@@ -75,6 +75,26 @@ class Pedido{
     public function setFecha($fecha)
     {
         $this->fecha = $fecha;
+
+        return $this;
+    }
+
+     /**
+     * Get the value of productos
+     */ 
+    public function getProductos()
+    {
+        return $this->productos;
+    }
+
+    /**
+     * Set the value of productos
+     *
+     * @return  self
+     */ 
+    public function setProductos($productos)
+    {
+        $this->productos = $productos;
 
         return $this;
     }

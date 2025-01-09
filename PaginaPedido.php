@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
     $descripcion = $_POST['descripcion'];
     $precio = $_POST['precio'];
     $stock = $_POST['stock'];
+    
 
     // Crear un array con los datos del producto
     $producto = [
@@ -59,13 +60,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['vaciar_cesta'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
-    // Insertar el pedido en la base de datos
-    $pedido = new Pedido(null, $email, new DateTime(), $_SESSION['productos'][$email]);
-    insertarPedido($pedido);
-
-    // Limpiar la sesión después de la compra
-    unset($_SESSION['productos'][$email]);
+      // Insertar el pedido en la base de datos
+      $pedido = new Pedido(null, $email, new DateTime(), $_SESSION['productos'][$email]);
+      insertarPedido($pedido);
+  
+      // Limpiar la sesión después de la compra
+      unset($_SESSION['productos'][$email]);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
