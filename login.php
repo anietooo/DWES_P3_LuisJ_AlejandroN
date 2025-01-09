@@ -107,8 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="invalid-feedback"><?php echo $password1Err; ?></div>
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" name="conectado" id="conectado" class="form-check-input">
-                        <label class="form-check-label" for="conectado">Permanecer conectado</label>
+                        <label><input type="checkbox" name="conectado"> Mantenerme conectado</label>
                     </div>
                     <div class="form-group">
                         <label class="text-danger"><?php echo $errorLogin; ?></label>
