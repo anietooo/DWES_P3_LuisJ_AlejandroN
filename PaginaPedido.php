@@ -76,15 +76,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina Pedido</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            height: 100vh;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-body {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
-        <div class="row">
+        <div class="product-grid">
             <?php
             if (isset($_SESSION['productos'][$email])) {
                 foreach ($_SESSION['productos'][$email] as $producto) {
-                    echo '<div class="col-md-4">';
-                    echo '<div class="card mb-4">';
+                    echo '<div class="card">';
                     echo '<div class="card-body">';
                     echo '<form action="PaginaPedido.php" method="post" style="position: relative;">';
                     echo '<input type="hidden" name="id" value="' . $producto['id'] . '">';
@@ -96,18 +115,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
                     echo '<p class="card-text">Stock: ' . ($producto['stock'] ? "Disponible" : "No disponible") . '</p>';
                     echo '</div>';
                     echo '</div>';
-                    echo '</div>';
                 }
             }
             ?>
         </div>
         <?php if (isset($_SESSION['productos'][$email]) && count($_SESSION['productos'][$email]) > 0): ?>
-            <form action="PaginaPedido.php" method="post">
+            <form action="PaginaPedido.php" method="post" class="mt-3">
                 <button type="submit" name="comprar" class="btn btn-outline-primary">Comprar</button>
                 <button type="submit" name="vaciar_cesta" class="btn btn-danger">Vaciar Cesta</button>
             </form>
         <?php endif; ?>
     </div>
+    <?php require_once("./views/footer.php"); ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 <?php
