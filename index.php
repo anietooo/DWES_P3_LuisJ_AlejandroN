@@ -75,7 +75,9 @@ require_once("./views/header.php")
                 <p style="word-wrap: break-word;">Logitech G413 TKL</p>
                 <span class="text-decoration-line-through text-muted">149,99 &nbsp;€</span>
                 <p class="fw-bold text-danger">109,99 &nbsp;€</p>
-                <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
+                <a href="./PaginaProducto.php">
+                  <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
+                </a>
               </div>
             </div>
             <div class="d-flex flex-column align-items-center" style="width: 300px;">
@@ -87,7 +89,9 @@ require_once("./views/header.php")
                 <p style="word-wrap: break-word;">Razer DeathAdder Essential</p>
                 <span class="text-decoration-line-through text-muted">79,99 &nbsp;€</span>
                 <p class="fw-bold text-danger">49,99 &nbsp;€</p>
-                <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
+                <a href="./PaginaProducto.php">
+                  <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
+                </a>
               </div>
             </div>
             <div class="d-flex flex-column align-items-center" style="width: 300px;">
@@ -99,7 +103,9 @@ require_once("./views/header.php")
                 <p style="word-wrap: break-word;">Neo PC</p>
                 <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
                 <p class="fw-bold text-danger">549,99 &nbsp;€</p>
-                <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
+                <a href="./PaginaProducto.php">
+                  <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
+                </a>
               </div>
             </div>
             <div class="d-flex flex-column align-items-center" style="width: 300px;">
@@ -111,7 +117,9 @@ require_once("./views/header.php")
                 <p style="word-wrap: break-word;">Ordenador de sobremesa</p>
                 <span class="text-decoration-line-through text-muted">399,99 &nbsp;€</span>
                 <p class="fw-bold text-danger">199,99 &nbsp;€</p>
-                <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
+                <a href="./PaginaProducto.php">
+                  <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
+                </a>
               </div>
             </div>
           </div>
