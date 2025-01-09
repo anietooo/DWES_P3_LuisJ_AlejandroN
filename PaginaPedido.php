@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
     $descripcion = $_POST['descripcion'];
     $precio = $_POST['precio'];
     $stock = $_POST['stock'];
-    
+
 
     // Crear un array con los datos del producto
     $producto = [
@@ -60,17 +60,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['vaciar_cesta'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
-      // Insertar el pedido en la base de datos
-      $pedido = new Pedido(null, $email, new DateTime(), $_SESSION['productos'][$email]);
-      insertarPedido($pedido);
-  
-      // Limpiar la sesión después de la compra
-      unset($_SESSION['productos'][$email]);
+    // Insertar el pedido en la base de datos
+    $pedido = new Pedido(null, $email, new DateTime(), $_SESSION['productos'][$email]);
+    insertarPedido($pedido);
+
+    // Limpiar la sesión después de la compra
+    unset($_SESSION['productos'][$email]);
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,21 +83,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
             grid-template-rows: auto 1fr auto;
             height: 100vh;
         }
+
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
+
         .card {
             height: 100%;
             display: flex;
             flex-direction: column;
         }
+
         .card-body {
             flex: 1;
         }
     </style>
 </head>
+
 <body>
     <div class="container mt-5">
         <div class="product-grid">
@@ -107,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
                     echo '<div class="card-body">';
                     echo '<form action="PaginaPedido.php" method="post" style="position: relative;">';
                     echo '<input type="hidden" name="id" value="' . $producto['id'] . '">';
-                    echo '<button type="submit" name="eliminar_producto" class="btn btn-danger btn-sm" style="position: absolute; top: 10px; right: 10px;">X</button>';
+                    echo '<button type="submit" name="eliminar_producto" class="btn btn-danger btn-sm" style="position: absolute; top: -5px; right: 10px;">X</button>';
                     echo '</form>';
                     echo '<h5 class="card-title">' . $producto['nombre'] . '</h5>';
                     echo '<p class="card-text">' . $producto['descripcion'] . '</p>';
@@ -129,6 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
     <?php require_once("./views/footer.php"); ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
 <?php
 require_once("./views/footer.php");
