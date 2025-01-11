@@ -8,8 +8,8 @@ function conectar(): mysqli
     $user = "root";
     $pass = "root";
     $dbname = "DWES_P3_LuisJ_AlejandroN";
-    $puerto = "3307";
-    $conexion = new mysqli($server, $user, $pass, $dbname,$puerto);
+    //$puerto = "3307";
+    $conexion = new mysqli($server, $user, $pass, $dbname);
 
     if ($conexion->connect_error) {
         die("Conexión fallida: " . $conexion->connect_error);

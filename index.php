@@ -13,7 +13,6 @@ require_once("./views/header.php")
     rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
     crossorigin="anonymous" />
-
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -23,6 +22,7 @@ require_once("./views/header.php")
 
 <body>
   <div class="container-fluid mt-5">
+    <!-- Carousel -->
     <div class="row">
       <div class="col-12">
         <nav class="d-flex justify-content-center align-items-center">
@@ -34,16 +34,15 @@ require_once("./views/header.php")
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="./views/img/Banner_Pagina.jpg" class="d-block" alt="...">
+                <img src="./views/img/Banner_Pagina.jpg" class="d-block w-100 img-fluid" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="./views/img/Shotout.jpg" class="d-block" alt="...">
+                <img src="./views/img/Shotout.jpg" class="d-block w-100 img-fluid" alt="...">
               </div>
               <div class="carousel-item">
                 <a href="https://www.youtube.com/watch?v=w_0a1_eqlwg">
-                  <img src="./views/img/Teclado.png" class="d-block" alt="...">
+                  <img src="./views/img/Teclado.png" class="d-block w-100 img-fluid" alt="...">
                 </a>
-
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -59,106 +58,103 @@ require_once("./views/header.php")
       </div>
     </div>
 
+    <!-- Productos Destacados -->
     <div class="row mt-5">
-      <div class="col-12">
-        <h2 class="text-center">Productos destacados</h2>
-        <p class="text-center">Los productos mas comprados</p>
+      <div class="col-12 text-center">
+        <h2>Productos destacados</h2>
+        <p>Los productos más comprados</p>
         <hr>
-        <div class="hr-mg gallery d-flex justify-content-center align-items-center mt-5">
-          <div class="gap-3 d-flex justify-content-between align-items-center flex-wrap" style="width: 1560px; height: 500px;">
-            <div class="d-flex flex-column align-items-center" style="width: 300px;">
-              <div class="radius img-container">
-                <img src="./views/img/SinFondo/G413TKL.png" alt="" style="width: 200px; height: 150px;">
-              </div>
-              <div class="text-center mt-2" style="width: 100%; height: 200px;">
-                <span class="text-muted">Teclado</span>
-                <p style="word-wrap: break-word;">Logitech G413 TKL</p>
-                <span class="text-decoration-line-through text-muted">149,99 &nbsp;€</span>
-                <p class="fw-bold text-danger">109,99 &nbsp;€</p>
-                <a href="./PaginaProducto.php">
-                  <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
-                </a>
-              </div>
-            </div>
-            <div class="d-flex flex-column align-items-center" style="width: 300px;">
-              <div class="radius img-container">
-                <img src="./views/img/SinFondo/RazerDeathAdderEssential.png" alt="" style="width: 200px; height: 150px;">
-              </div>
-              <div class="text-center mt-2" style="width: 100%; height: 200px;">
-                <span class="text-muted">Ratón</span>
-                <p style="word-wrap: break-word;">Razer DeathAdder Essential</p>
-                <span class="text-decoration-line-through text-muted">79,99 &nbsp;€</span>
-                <p class="fw-bold text-danger">49,99 &nbsp;€</p>
-                <a href="./PaginaProducto.php">
-                  <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
-                </a>
-              </div>
-            </div>
-            <div class="d-flex flex-column align-items-center" style="width: 300px;">
-              <div class="radius img-container">
-                <img src="./views/img/SinFondo/NeoPC.png" alt="" style="width: 200px; height: 150px;">
-              </div>
-              <div class="text-center mt-2" style="width: 100%; height: 200px;">
-                <span class="text-muted">Ordenador</span>
-                <p style="word-wrap: break-word;">Neo PC</p>
-                <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
-                <p class="fw-bold text-danger">549,99 &nbsp;€</p>
-                <a href="./PaginaProducto.php">
-                  <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
-                </a>
-              </div>
-            </div>
-            <div class="d-flex flex-column align-items-center" style="width: 300px;">
-              <div class="radius img-container">
-                <img src="./views/img/SinFondo/HPEliteDesk800G1.png" alt="" style="width: 200px; height: 150px;">
-              </div>
-              <div class="text-center mt-2" style="width: 100%; height: 200px;">
-                <span class="text-muted">Ordenador</span>
-                <p style="word-wrap: break-word;">Ordenador de sobremesa</p>
-                <span class="text-decoration-line-through text-muted">399,99 &nbsp;€</span>
-                <p class="fw-bold text-danger">199,99 &nbsp;€</p>
-                <a href="./PaginaProducto.php">
-                  <input type="button" class="btn btn-outline-primary" value="Comprar ahora" name="buy-product" id="buy-product">
-                </a>
-              </div>
-            </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-4">
+      <div class="gallery d-flex justify-content-center align-items-center flex-wrap gap-3">
+        <!-- Producto 1 -->
+        <div class="d-flex flex-column align-items-center" style="width: 300px;">
+          <div class="radius img-container">
+            <img src="./views/img/SinFondo/G413TKL.png" alt="" style="width: 200px; height: 150px;">
           </div>
-
+          <div class="text-center mt-2" style="width: 100%; height: 200px;">
+            <span class="text-muted">Teclado</span>
+            <p style="word-wrap: break-word;">Logitech G413 TKL</p>
+            <span class="text-decoration-line-through text-muted">149,99 &nbsp;€</span>
+            <p class="fw-bold text-danger">109,99 &nbsp;€</p>
+            <a href="./PaginaProducto.php">
+              <input type="button" class="btn btn-outline-primary" value="Comprar ahora">
+            </a>
+          </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="d-flex flex-column align-items-center" style="width: 300px;">
+          <div class="radius img-container">
+            <img src="./views/img/SinFondo/RazerDeathAdderEssential.png" alt="" style="width: 200px; height: 150px;">
+          </div>
+          <div class="text-center mt-2" style="width: 100%; height: 200px;">
+            <span class="text-muted">Ratón</span>
+            <p style="word-wrap: break-word;">Razer DeathAdder Essential</p>
+            <span class="text-decoration-line-through text-muted">79,99 &nbsp;€</span>
+            <p class="fw-bold text-danger">49,99 &nbsp;€</p>
+            <a href="./PaginaProducto.php">
+              <input type="button" class="btn btn-outline-primary" value="Comprar ahora">
+            </a>
+          </div>
+        </div>
+        <!-- Producto 3 -->
+        <div class="d-flex flex-column align-items-center" style="width: 300px;">
+          <div class="radius img-container">
+            <img src="./views/img/SinFondo/NeoPC.png" alt="" style="width: 200px; height: 150px;">
+          </div>
+          <div class="text-center mt-2" style="width: 100%; height: 200px;">
+            <span class="text-muted">Ordenador</span>
+            <p style="word-wrap: break-word;">Neo PC</p>
+            <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
+            <p class="fw-bold text-danger">549,99 &nbsp;€</p>
+            <a href="./PaginaProducto.php">
+              <input type="button" class="btn btn-outline-primary" value="Comprar ahora">
+            </a>
+          </div>
+        </div>
+        <!-- Producto 4 -->
+        <div class="d-flex flex-column align-items-center" style="width: 300px;">
+          <div class="radius img-container">
+            <img src="./views/img/SinFondo/HPEliteDesk800G1.png" alt="" style="width: 200px; height: 150px;">
+          </div>
+          <div class="text-center mt-2" style="width: 100%; height: 200px;">
+            <span class="text-muted">Ordenador</span>
+            <p style="word-wrap: break-word;">Ordenador de sobremesa</p>
+            <span class="text-decoration-line-through text-muted">399,99 &nbsp;€</span>
+            <p class="fw-bold text-danger">199,99 &nbsp;€</p>
+            <a href="./PaginaProducto.php">
+              <input type="button" class="btn btn-outline-primary" value="Comprar ahora">
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="row h-25">
-  <div class="col-12">
-    <h2 class="text-center">Por qué comprar?</h2>
-    <div class="d-flex justify-content-center gap-3 mt-5">
-      <div class="bg-customWhite d-flex flex-column align-items-center" style="width: 320px;">
-        <div class="text-center mt-2 d-flex flex-column justify-content-center" style="width: 220px; height: 180px;">
-        <i class="fa-solid fa-rotate-right fa-2x"></i>
-          <p class="fs-5 mt-2">14 días de desistimiento</p>
-        </div>
-      </div>
-      <div class="bg-customWhite d-flex flex-column align-items-center" style="width: 320px;">
-        <div class="text-center mt-2 d-flex flex-column justify-content-center" style="width: 220px; height: 180px;">
-          <i class="fas fa-home fa-2x"></i>
-          <p class="fs-5 mt-2">Envío gratuito</p>
-        </div>
-      </div>
-      <div class="bg-customWhite d-flex flex-column align-items-center" style="width: 320px;">
-        <div class="text-center mt-2 d-flex flex-column justify-content-center" style="width: 220px; height: 180px;">
-        <i class="fa-regular fa-envelope fa-2x"></i>
-          <p class="fs-5 mt-2">Soporte 24/7</p>
-        </div>
-      </div>
-      <div class="bg-customWhite d-flex flex-column align-items-center" style="width: 320px;">
-        <div class="text-center mt-2 d-flex flex-column justify-content-center" style="width: 220px; height: 180px;">
-          <i class="fas fa-phone fa-2x"></i>
-          <p class="fs-5 mt-2">Atención telefonica</p>
+    <!-- Porque Comprar -->
+    <div class="row h-25 mt-5">
+      <div class="col-12">
+        <h2 class="text-center">¿Por qué comprar?</h2>
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-5">
+          <div class="bg-light p-4 text-center" style="width: 280px;">
+            <i class="fa-solid fa-rotate-right fa-2x"></i>
+            <p class="fs-5 mt-3">14 días de desistimiento</p>
+          </div>
+          <div class="bg-light p-4 text-center" style="width: 280px;">
+            <i class="fas fa-home fa-2x"></i>
+            <p class="fs-5 mt-3">Envío gratuito</p>
+          </div>
+          <div class="bg-light p-4 text-center" style="width: 280px;">
+            <i class="fa-regular fa-envelope fa-2x"></i>
+            <p class="fs-5 mt-3">Soporte 24/7</p>
+          </div>
+          <div class="bg-light p-4 text-center" style="width: 280px;">
+            <i class="fas fa-phone fa-2x"></i>
+            <p class="fs-5 mt-3">Atención telefónica</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
   </div>
 </body>
 
