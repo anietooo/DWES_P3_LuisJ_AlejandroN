@@ -2,7 +2,10 @@
 include_once("./model/Producto.php");
 
 /**
- * FALTA POR HACER
+ * Inserta un producto en la base de datos.
+ *
+ * @param Producto $producto El producto a insertar.
+ * @return bool True si la inserción fue exitosa, false en caso contrario.
  */
 function insertarProducto($producto): bool
 {
@@ -20,7 +23,9 @@ function insertarProducto($producto): bool
 }
 
 /**
- * FALTA POR HACER
+ * Lee todos los productos de la base de datos.
+ *
+ * @return mysqli_result El resultado de la consulta.
  */
 function leerProducto(){
     $c = conectar();
@@ -62,7 +67,10 @@ function leerProductoMonitor($id)
 }
 
 /**
- * FALTA POR HACER
+ * Actualiza un producto en la base de datos.
+ *
+ * @param Producto $p El producto a actualizar.
+ * @return void
  */
 function actualizarProducto($p)
 {
@@ -80,7 +88,10 @@ function actualizarProducto($p)
 }
 
 /**
- * FALTA POR HACER
+ * Elimina un producto de la base de datos.
+ *
+ * @param int $id El ID del producto a eliminar.
+ * @return bool True si la eliminación fue exitosa, false en caso contrario.
  */
 function eliminarProducto($id)
 {

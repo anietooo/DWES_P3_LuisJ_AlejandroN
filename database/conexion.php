@@ -1,6 +1,8 @@
 <?php
 /**
- * FALTA POR HACER
+ * Establece una conexión con la base de datos.
+ *
+ * @return mysqli La conexión a la base de datos.
  */
 function conectar(): mysqli
 {
@@ -18,6 +20,11 @@ function conectar(): mysqli
     return $conexion;
 }
 
+/**
+ * Crea la tabla Usuario en la base de datos si no existe.
+ *
+ * @return void
+ */
 function crearTabla()
 {
     // Establecer la conexión
@@ -37,6 +44,12 @@ function crearTabla()
     $c->close();
 }
 
+/**
+ * Securiza los datos de entrada.
+ *
+ * @param string $datos Los datos a securizar.
+ * @return string Los datos securizados.
+ */
 function securizar($datos): string {
     $datos = trim($datos);
     $datos = stripslashes($datos);

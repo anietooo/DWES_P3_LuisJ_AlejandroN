@@ -3,7 +3,10 @@
 include_once("./model/Pedido.php");
 
 /**
- * FALTA POR HACER
+ * Inserta un pedido en la base de datos.
+ *
+ * @param Pedido $pedido El pedido a insertar.
+ * @return bool True si la inserción fue exitosa, false en caso contrario.
  */
 function insertarPedido($pedido): bool
 {
@@ -31,7 +34,9 @@ function insertarPedido($pedido): bool
 }
 
 /**
- * FALTA POR HACER
+ * Lee todos los pedidos de la base de datos.
+ *
+ * @return mysqli_result El resultado de la consulta.
  */
 function leerPedido()
 {
@@ -43,8 +48,10 @@ function leerPedido()
 }
 
 /**
- * FALTA POR HACER
- * DUDA DE PRODUCTOS EN NEW PEDIDO
+ * Lee un pedido de la base de datos por su ID.
+ *
+ * @param int $id El ID del pedido a leer.
+ * @return Pedido|null El pedido leído o null si no se encontró.
  */
 function leerPedidoCriterio($id)
 {
@@ -61,7 +68,10 @@ function leerPedidoCriterio($id)
 }
 
 /**
- * FALTA POR HACER
+ * Actualiza un pedido en la base de datos.
+ *
+ * @param Pedido $p El pedido a actualizar.
+ * @return void 
  */
 function actualizarPedido($p)
 {
@@ -77,7 +87,10 @@ function actualizarPedido($p)
 }
 
 /**
- * FALTA POR HACER
+ * Elimina un pedido de la base de datos.
+ *
+ * @param int $id El ID del pedido a eliminar.
+ * @return bool True si la eliminación fue exitosa, false en caso contrario.
  */
 function eliminarPedido($id)
 {

@@ -2,6 +2,12 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . "/model/Usuario.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/database/conexion.php";
 
+/**
+ * Inserta un usuario en la base de datos.
+ *
+ * @param Usuario $u El usuario a insertar.
+ * @return void
+ */
 function insertarUsuario($u)
 {
     $c = conectar();
@@ -18,6 +24,12 @@ function insertarUsuario($u)
     $c->close();
 }
 
+/**
+ * Lee un usuario de la base de datos por su email.
+ *
+ * @param string $email El email del usuario a leer.
+ * @return Usuario|null El usuario leído o null si no se encontró.
+ */
 function leerUsuario($email){
     $c = conectar();
     $sql = "SELECT * FROM Usuario WHERE email = ?";
@@ -31,6 +43,13 @@ function leerUsuario($email){
     return null;
 }
 
+/**
+ * Comprueba las credenciales de un usuario.
+ *
+ * @param string $email El email del usuario.
+ * @param string $password1 La contraseña del usuario.
+ * @return int 1 si las credenciales son correctas, -1 si el usuario no existe, -2 si la contraseña es incorrecta.
+ */
 function comprobacionLogin($email,$password1)
 {
     $sql = "SELECT * FROM Usuario WHERE email = ?";
