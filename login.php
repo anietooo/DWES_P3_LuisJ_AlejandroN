@@ -4,7 +4,6 @@ session_start();
 ?>
 
 <?php
-session_start();
 $email = $password1 = "";
 $emailErr = $password1Err = "";
 $errorLogin = "";

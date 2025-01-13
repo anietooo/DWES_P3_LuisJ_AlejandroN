@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once("./database/conexion.php");
 include_once("./database/productoDB.php");
 include_once("./model/Ordenador.php");
@@ -14,6 +13,8 @@ require_once("./model/Periferico.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina Producto</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
             display: grid;
@@ -128,6 +129,23 @@ require_once("./model/Periferico.php");
     </div>
 </div>
     <iframe name="hidden_iframe"></iframe> <!-- Iframe oculto -->
+    <script>
+        // Selecciona todos los formularios dentro de los productos
+        const productForms = document.querySelectorAll('.product-item form');
+
+        productForms.forEach(form => {
+            form.addEventListener('submit', (event) => {
+                Swal.fire({
+                    title: '¡Producto añadido!',
+                    text: 'El producto se ha añadido al carrito correctamente.',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                }).then(() => {
+                    form.submit(); // Envía el formulario después de cerrar la alerta
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
