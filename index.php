@@ -19,6 +19,12 @@ require_once("./views/header.php");
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./views/index.css">
+  <style>
+    .zoom-text:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+  </style>
 </head>
 
 <body>
@@ -26,7 +32,7 @@ require_once("./views/header.php");
     <!-- Carousel -->
     <div class="row">
       <div class="col-12">
-        <nav class="d-flex justify-content-center align-items-center">
+        <nav class="d-flex justify-content-center align-items-center zoom-text">
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -74,7 +80,7 @@ require_once("./views/header.php");
           <div class="radius img-container">
             <img src="./views/img/SinFondo/G413TKL.png" alt="" style="width: 200px; height: 150px;">
           </div>
-          <div class="text-center mt-2" style="width: 100%; height: 200px;">
+          <div class="text-center mt-2 zoom-text" style="width: 100%; height: 200px;">
             <span class="text-muted">Teclado</span>
             <p style="word-wrap: break-word;">Logitech G413 TKL</p>
             <span class="text-decoration-line-through text-muted">149,99 &nbsp;€</span>
@@ -89,7 +95,7 @@ require_once("./views/header.php");
           <div class="radius img-container">
             <img src="./views/img/SinFondo/RazerDeathAdderEssential.png" alt="" style="width: 200px; height: 150px;">
           </div>
-          <div class="text-center mt-2" style="width: 100%; height: 200px;">
+          <div class="text-center mt-2 zoom-text" style="width: 100%; height: 200px;">
             <span class="text-muted">Ratón</span>
             <p style="word-wrap: break-word;">Razer DeathAdder Essential</p>
             <span class="text-decoration-line-through text-muted">79,99 &nbsp;€</span>
@@ -104,7 +110,7 @@ require_once("./views/header.php");
           <div class="radius img-container">
             <img src="./views/img/SinFondo/NeoPC.png" alt="" style="width: 200px; height: 150px;">
           </div>
-          <div class="text-center mt-2" style="width: 100%; height: 200px;">
+          <div class="text-center mt-2 zoom-text" style="width: 100%; height: 200px;">
             <span class="text-muted">Ordenador</span>
             <p style="word-wrap: break-word;">Neo PC</p>
             <span class="text-decoration-line-through text-muted">749,99 &nbsp;€</span>
@@ -119,7 +125,7 @@ require_once("./views/header.php");
           <div class="radius img-container">
             <img src="./views/img/SinFondo/HPEliteDesk800G1.png" alt="" style="width: 200px; height: 150px;">
           </div>
-          <div class="text-center mt-2" style="width: 100%; height: 200px;">
+          <div class="text-center mt-2 zoom-text" style="width: 100%; height: 200px;">
             <span class="text-muted">Ordenador</span>
             <p style="word-wrap: break-word;">Ordenador de sobremesa</p>
             <span class="text-decoration-line-through text-muted">399,99 &nbsp;€</span>
@@ -136,27 +142,43 @@ require_once("./views/header.php");
     <div class="row h-25 mt-5">
       <div class="col-12">
         <h2 class="text-center">¿Por qué comprar?</h2>
-        <div class="d-flex flex-wrap justify-content-center gap-3 mt-5">
-          <div class="bg-light p-4 text-center" style="width: 280px;">
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-5 ">
+          <div class="bg-light p-4 text-center zoom-text" style="width: 280px;">
             <i class="fa-solid fa-rotate-right fa-2x"></i>
             <p class="fs-5 mt-3">14 días de desistimiento</p>
           </div>
-          <div class="bg-light p-4 text-center" style="width: 280px;">
+          <div class="bg-light p-4 text-center zoom-text" style="width: 280px;">
             <i class="fas fa-home fa-2x"></i>
             <p class="fs-5 mt-3">Envío gratuito</p>
           </div>
-          <div class="bg-light p-4 text-center" style="width: 280px;">
+          <div class="bg-light p-4 text-center zoom-text" style="width: 280px;">
             <i class="fa-regular fa-envelope fa-2x"></i>
             <p class="fs-5 mt-3">Soporte 24/7</p>
           </div>
-          <div class="bg-light p-4 text-center" style="width: 280px;">
+          <div class="bg-light p-4 text-center zoom-text" style="width: 280px;">
             <i class="fas fa-phone fa-2x"></i>
             <p class="fs-5 mt-3">Atención telefónica</p>
           </div>
         </div>
+        <button id="darkModeToggle" class="btn btn-dark position-fixed" style="bottom: 20px; right: 20px;">Modo Oscuro</button>
+
       </div>
     </div>
   </div>
+
+  <script>
+    document.querySelectorAll('.gallery .img-container').forEach(item => {
+      item.addEventListener('mouseover', () => {
+        item.style.transform = 'scale(1.1)';
+        item.style.transition = 'transform 0.3s ease-in-out';
+      });
+      item.addEventListener('mouseout', () => {
+        item.style.transform = 'scale(1)';
+      });
+    });
+
+ 
+  </script>
 </body>
 
 </html>
