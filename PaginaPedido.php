@@ -1,13 +1,12 @@
 <?php
 // filepath: /c:/Users/zonag/Desktop/fp/DAW/2ºAÑO/PHP/DWES_P3_LuisJ_AlejandroN/PaginaPedido.php
+session_start();
 include_once("./database/conexion.php");
 include_once("./database/productoDB.php");
 include_once("./database/pedidoDB.php");
 include_once("./model/Producto.php");
 include_once("./model/Pedido.php");
 require_once("./views/header.php");
-
-session_start();
 
 if (!isset($_SESSION['email'])) {
     // Redirige al usuario al login si no está logueado

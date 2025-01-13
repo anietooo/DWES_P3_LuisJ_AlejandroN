@@ -1,11 +1,11 @@
 <?php
+session_start();
 include_once("./database/conexion.php");
 include_once("./database/productoDB.php");
 include_once("./model/Ordenador.php");
 include_once("./model/Monitor.php");
 require_once("./views/header.php");
 require_once("./model/Periferico.php");
-session_start()
 ?>
 <!DOCTYPE html>
 <html lang="en">
