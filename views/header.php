@@ -51,6 +51,11 @@
       <!--Icono de usuario a la derecha-->
       <div class="col-12 col-sm-2 mt-3">
         <ul class="list-unstyled d-flex justify-content-center justify-content-sm-end">
+        <?php if (isset($_SESSION['email'])): ?>
+            <li class="fs-4 mx-3 text-white d-flex align-items-center">
+              <span class="badge bg-secondary"><?php echo htmlspecialchars($_SESSION['email']); ?></span>
+            </li>
+          <?php endif; ?>
           <li class="fs-4 mx-3 text-white">
             <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="/login.php">
               <i class="fa-solid fa-user"></i>

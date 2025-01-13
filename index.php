@@ -1,5 +1,6 @@
 <?php
-require_once("./views/header.php")
+session_start();
+require_once("./views/header.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
