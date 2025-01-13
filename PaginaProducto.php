@@ -61,65 +61,71 @@ require_once("./model/Periferico.php");
     //insertarProducto(new Periferico("Teclado", "Logitech", 9, "G413 TKL", "Que tus habilidades gaming pasen a otro nivel: Logitech G413 TKL SE es un teclado con diez teclas menos con funciones para gaming con la resistencia y el rendimiento necesarios para competir", 65, 105));
     ?>
 
-    <div class="container mt-5">
-        <div class="product-grid">
-            <?php
-            $productos = leerProducto();
-            foreach ($productos as $producto) {
-                // Define la URL de la imagen para cada producto
-                $imagenUrl = "";
-                switch ($producto['id']) {
-                    case 1:
-                        $imagenUrl = "./views/img/SinFondo/HPEliteDesk800G1.png";
-                        break;
-                    case 2:
-                        $imagenUrl = "./views/img/SinFondo/Ordenador.png"; // Poner una foto aqui
-                        break;
-                    case 3:
-                        $imagenUrl = "./views/img/SinFondo/NeoPC.png";
-                        break;
-                    case 4:
-                        $imagenUrl = "./views/img/SinFondo/ASUSVG27AQ1A.png";
-                        break;
-                    case 5:
-                        $imagenUrl = "./views/img/SinFondo/LG24GS50F-B.png";
-                        break;
-                    case 6:
-                        $imagenUrl = "./views/img/SinFondo/BenQZOWIEXL2411P.png";
-                        break;
-                    case 7:
-                        $imagenUrl = "./views/img/SinFondo/RazerDeathAdderEssential.png";
-                        break;
-                    case 8:
-                        $imagenUrl = "./views/img/SinFondo/K70RGBPRO.png";
-                        break;
-                    case 9:
-                        $imagenUrl = "./views/img/SinFondo/G413TKL.png";
-                        break;
-                    default:
-                        $imagenUrl = "ruta/a/imagen_default.jpg";
-                        break;
-                }
-
-                echo '<div class="product-item">';
-                echo '<img src="' . $imagenUrl . '" alt="' . $producto['nombre'] . '">';
-                echo '<h3>' . $producto['nombre'] . '</h3>';
-                echo '<p>' . $producto['descripcion'] . '</p>';
-                echo '<p>Precio: ' . $producto['precio'] . '€</p>';
-                echo '<p>Stock: ' . ($producto['stock'] ? "Disponible" : "No disponible") . '</p>'; // Mostrar el mensaje de stock
-                echo '<form action="PaginaPedido.php" method="post" target="hidden_iframe">';
-                echo '<input type="hidden" name="id" value="' . $producto['id'] . '">';
-                echo '<input type="hidden" name="nombre" value="' . $producto['nombre'] . '">';
-                echo '<input type="hidden" name="descripcion" value="' . $producto['descripcion'] . '">';
-                echo '<input type="hidden" name="precio" value="' . $producto['precio'] . '">';
-                echo '<input type="hidden" name="stock" value="' . $producto['stock'] . '">';
-                echo '<button type="submit" name="add_product" class="btn btn-primary">Añadir producto</button>';
-                echo '</form>';
-                echo '</div>';
+<div class="container mt-5">
+    <div class="product-grid">
+        <?php
+        $productos = leerProducto();
+        foreach ($productos as $producto) {
+            // Define la URL de la imagen para cada producto
+            $imagenUrl = "";
+            switch ($producto['id']) {
+                case 1:
+                    $imagenUrl = "./views/img/SinFondo/HPEliteDesk800G1.png";
+                    break;
+                case 2:
+                    $imagenUrl = "./views/img/SinFondo/Ordenador.png"; // Poner una foto aqui
+                    break;
+                case 3:
+                    $imagenUrl = "./views/img/SinFondo/NeoPC.png";
+                    break;
+                case 4:
+                    $imagenUrl = "./views/img/SinFondo/ASUSVG27AQ1A.png";
+                    break;
+                case 5:
+                    $imagenUrl = "./views/img/SinFondo/LG24GS50F-B.png";
+                    break;
+                case 6:
+                    $imagenUrl = "./views/img/SinFondo/BenQZOWIEXL2411P.png";
+                    break;
+                case 7:
+                    $imagenUrl = "./views/img/SinFondo/RazerDeathAdderEssential.png";
+                    break;
+                case 8:
+                    $imagenUrl = "./views/img/SinFondo/K70RGBPRO.png";
+                    break;
+                case 9:
+                    $imagenUrl = "./views/img/SinFondo/G413TKL.png";
+                    break;
+                default:
+                    $imagenUrl = "ruta/a/imagen_default.jpg";
+                    break;
             }
-            ?>
-        </div>
+
+            // Verifica si el producto está en stock
+            $botonClase = $producto['stock'] > 0 ? 'btn-primary' : 'btn-secondary';
+            $botonTexto = $producto['stock'] > 0 ? 'Añadir producto' : 'No disponible';
+
+            echo '<div class="product-item">';
+            echo '<img src="' . $imagenUrl . '" alt="' . $producto['nombre'] . '">';
+            echo '<h3>' . $producto['nombre'] . '</h3>';
+            echo '<p>' . $producto['descripcion'] . '</p>';
+            echo '<p>Precio: ' . $producto['precio'] . '€</p>';
+            echo '<p>Stock: ' . ($producto['stock'] ? "Disponible" : "No disponible") . '</p>'; // Mostrar el mensaje de stock
+            echo '<form action="PaginaPedido.php" method="post" target="hidden_iframe">';
+            echo '<input type="hidden" name="id" value="' . $producto['id'] . '">';
+            echo '<input type="hidden" name="nombre" value="' . $producto['nombre'] . '">';
+            echo '<input type="hidden" name="descripcion" value="' . $producto['descripcion'] . '">';
+            echo '<input type="hidden" name="precio" value="' . $producto['precio'] . '">';
+            echo '<input type="hidden" name="stock" value="' . $producto['stock'] . '">';
+            echo '<button type="submit" name="add_product" class="btn ' . $botonClase . '" ' . ($producto['stock'] > 0 ? '' : 'disabled') . '>';
+            echo $botonTexto;
+            echo '</button>';
+            echo '</form>';
+            echo '</div>';
+        }
+        ?>
     </div>
+</div>
     <iframe name="hidden_iframe"></iframe> <!-- Iframe oculto -->
 </body>
 
