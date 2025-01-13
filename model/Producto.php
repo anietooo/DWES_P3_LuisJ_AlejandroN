@@ -4,7 +4,7 @@ abstract class Producto{
     private string $nombre;
     private string $descripcion;
     private int $precio;
-    private bool $stock;
+    private int $stock;
 
     public function __construct($id,$nombre,$descripcion,$precio,$stock)
     {
@@ -17,7 +17,7 @@ abstract class Producto{
 
     public function __toString()
     {
-        return "Id: $this->id , Nombre: $this->nombre , Descripcion: $this->descripcion , Precio: $this->precio ,  Stock: " . ($this->stock ? "Disponible" : "No disponible");
+        return "Id: $this->id , Nombre: $this->nombre , Descripcion: $this->descripcion , Precio: $this->precio ,  Stock: " . ($this->stock > 0 ? "Disponible" : "No disponible");
     }
 
     /**
@@ -105,7 +105,7 @@ abstract class Producto{
      */ 
     public function getStock()
     {
-        return $this->stock ? "Disponible" : "No disponible";
+        return $this->stock > 0 ? "Disponible" : "No disponible";
     }
 
     /**
