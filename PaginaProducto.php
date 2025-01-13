@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("./database/conexion.php");
 include_once("./database/productoDB.php");
 include_once("./model/Ordenador.php");
