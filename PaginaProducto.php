@@ -52,6 +52,12 @@ require_once("./model/Periferico.php");
             max-width: 100%;
             height: auto;
         }
+
+        .product-item-btn-animation:hover {
+        background-color: #f0f0f0; /* Cambia el color de fondo */
+        transform: scale(1.05); /* Aumenta el tamaño */
+        transition: all 0.3s ease; /* Añade una transición suave */
+    }
     </style>
 </head>
 
@@ -126,7 +132,7 @@ require_once("./model/Periferico.php");
                 echo '<input type="hidden" name="descripcion" value="' . $producto['descripcion'] . '">';
                 echo '<input type="hidden" name="precio" value="' . $producto['precio'] . '">';
                 echo '<input type="hidden" name="stock" value="' . $producto['stock'] . '">';
-                echo '<button type="submit" name="add_product" class="btn ' . $botonClase . '" ' . ($producto['stock'] > 0 ? '' : 'disabled') . '>';
+                echo '<button type="submit" name="add_product" class="btn product-item-btn-animation ' . $botonClase . '" ' . ($producto['stock'] > 0 ? '' : 'disabled') . '>';
                 echo $botonTexto;
                 echo '</button>';
                 echo '</form>';
