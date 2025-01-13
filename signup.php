@@ -120,33 +120,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="col-md-6">
                 <form class="border p-4 shadow-sm rounded align-self-center" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+
                     <div class="form-group">
-                        Nombre:* <input type="text" name="nombre" id="nombre"
-                            class="<?php if (!empty($nombreErr)) echo "error"; ?> form-control"
+                        <label for="nombre">Nombre:*</label>
+                        <input type="text" name="nombre" id="nombre"
+                            class=" form-control <?php if (!empty($nombreErr)) echo "is-invalid"; ?>"
                             value="<?php echo htmlspecialchars($nombre); ?>">
-                        <label><?php echo $nombreErr; ?></label>
+                        <div class="invalid-feedback"><?php echo $nombreErr; ?></div>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email:*</label>
-                        <input type="email" name="email" id="email" class="form-control <?php if (!empty($emailErr)) echo 'is-invalid'; ?>" value="<?php echo htmlspecialchars($email); ?>">
+                        <input type="email" name="email" id="email" class="form-control <?php if (!empty($emailErr)) echo 'is-invalid'; ?>"
+                         value="<?php echo htmlspecialchars($email); ?>">
                         <div class="invalid-feedback"><?php echo $emailErr; ?></div>
                     </div>
-                    
+
 
                     <div class="form-group">
                         <label for="password1">Contraseña:*</label>
                         <input type="password" name="password1" id="password1" class="form-control <?php if (!empty($password1Err)) echo 'is-invalid'; ?>" value="">
                         <div class="invalid-feedback"><?php echo $password1Err; ?></div>
                     </div>
-                    
+
 
                     <div class="form-group">
                         <label for="password1">Repetir Contraseña:*</label>
                         <input type="password" name="password2" id="password2" class="form-control <?php if (!empty($password1Err)) echo 'is-invalid'; ?>" value="">
                         <div class="invalid-feedback"><?php echo $password1Err; ?></div>
                     </div>
-                    
+
+                    <br>
+
                     <input class="btn btn-primary" type="submit" value="Enviar">
                     <input class="btn btn-secondary" type="reset" value="Limpiar formulario">
                 </form>
