@@ -43,7 +43,7 @@
             </a>
           </li>
           <li class="fs-4 mx-3 text-white">
-            <a class="text-decoration-none text-white linkHover" href="#"><i class="fa-solid fa-phone"></i>&nbsp;Contacto</a>
+            <a class="text-decoration-none text-white linkHover" href="/Contacto.php"><i class="fa-solid fa-phone"></i>&nbsp;Contacto</a>
           </li>
         </ul>
       </div>

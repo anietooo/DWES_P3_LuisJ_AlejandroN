@@ -160,7 +160,6 @@ require_once("./views/header.php");
             <p class="fs-5 mt-3">Atención telefónica</p>
           </div>
         </div>
-        <button id="darkModeToggle" class="btn btn-dark position-fixed" style="bottom: 20px; right: 20px;">Modo Oscuro</button>
 
       </div>
     </div>
