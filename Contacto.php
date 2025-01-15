@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once("./views/header.php");
+//Uso de la variable de sesión email para recuperar el email del usuario y mostrarlo en el formulario
+//para que no tenga que escribirlo de nuevo el usuario
 $email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
 ?>
 <!DOCTYPE html>
@@ -41,9 +43,10 @@ $email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
 </head>
 
 <body>
+    <!-- Formulario con un campo de correo para contactar -->
     <div class="form-container">
         <h2 class="mb-4">Pon tu correo y te contactaremos</h2>
-        <form action="submit_email.php" method="post">
+        <form action="" method="post">
             <div class="form-group">
                 <label for="email">Correo:</label>
                 <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>

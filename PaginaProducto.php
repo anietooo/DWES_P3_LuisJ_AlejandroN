@@ -55,14 +55,18 @@ require_once("./model/Periferico.php");
         }
 
         .product-item-btn-animation:hover {
-        background-color: #f0f0f0; /* Cambia el color de fondo */
-        transform: scale(1.05); /* Aumenta el tamaño */
-        transition: all 0.3s ease; /* Añade una transición suave */
+        background-color: #f0f0f0;
+        transform: scale(1.05);
+        transition: all 0.3s ease;
     }
     </style>
 </head>
 
 <body>
+    <!--
+     Inserción de los productos en la bdd, estan comentados porque lo ejecutamos una vez y ya para
+     que no se duplique
+    -->
     <?php
     //insertarProducto(new Ordenador(8, 1, "HP EliteDesk 800 G1", "Potente productividad:Esta Ordenador Portátil con Win 11 de 14 pulgadas está equipada con el rendimiento del procesador", 500, 100));
     //insertarProducto(new Ordenador(32, 2, "PcCom Ready", "Intel Core i7-14700KF / 32GB / 1TB SSD / RTX 4060", 1328, 10));
@@ -82,7 +86,9 @@ require_once("./model/Periferico.php");
             <?php
             $productos = leerProducto();
             foreach ($productos as $producto) {
-                // Define la URL de la imagen para cada producto
+                // Switch para definir la imagen para cada producto por id
+                // Sabemos que lo mejor seria meterlo en la bdd pero como eran
+                // pocas imagenes hemos decidido hacerlo así
                 $imagenUrl = "";
                 switch ($producto['id']) {
                     case 1:
@@ -117,10 +123,12 @@ require_once("./model/Periferico.php");
                         break;
                 }
 
-                // Verifica si el producto está en stock
+                // Si existe stock se pondra la clase btn-primary (azul) y el texto Añadir producto
+                // Si no hay stock se activará la clase btn-secondary (gris) y el texto No disponible
                 $botonClase = $producto['stock'] > 0 ? 'btn-primary' : 'btn-secondary';
                 $botonTexto = $producto['stock'] > 0 ? 'Añadir producto' : 'No disponible';
 
+                // Acceso a los datos para sacarlos por pantalla con echo
                 echo '<div class="product-item">';
                 echo '<img src="' . $imagenUrl . '" alt="' . $producto['nombre'] . '">';
                 echo '<h3>' . $producto['nombre'] . '</h3>';
@@ -133,6 +141,7 @@ require_once("./model/Periferico.php");
                 echo '<input type="hidden" name="descripcion" value="' . $producto['descripcion'] . '">';
                 echo '<input type="hidden" name="precio" value="' . $producto['precio'] . '">';
                 echo '<input type="hidden" name="stock" value="' . $producto['stock'] . '">';
+                // Botón para añadir producto si hay stock, si no hay stock el boton estará deshabilitado
                 echo '<button type="submit" name="add_product" class="btn product-item-btn-animation ' . $botonClase . '" ' . ($producto['stock'] > 0 ? '' : 'disabled') . '>';
                 echo $botonTexto;
                 echo '</button>';
@@ -144,6 +153,7 @@ require_once("./model/Periferico.php");
     </div>
     <iframe name="hidden_iframe"></iframe> <!-- Iframe oculto -->
     <script>
+        // Script que saca una alerta en caso de que le des al boton de añadir producto
         // Selecciona todos los formularios dentro de los productos
         const productForms = document.querySelectorAll('.product-item form');
 
@@ -160,6 +170,7 @@ require_once("./model/Periferico.php");
             });
         });
 
+        // Script para el scroll, hace una animacion de los prodcutos de abajo cuando vas scrolleando
         window.addEventListener('scroll', () => {
             const items = document.querySelectorAll('.product-item');
             const triggerBottom = window.innerHeight / 5 * 4;

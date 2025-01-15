@@ -13,6 +13,7 @@ class Pedido{
         $this->productos = $productos;
     }
 
+    
     public function __toString() {
         $fechaFormateada = $this->fecha->format('Y-m-d H:i:s');
         return "Id del pedido: " . $this->getId() . " , UsuarioId: " . $this->getUsuarioId() . " , Fecha: " . $fechaFormateada . " , Productos: " . implode(", ", $this->productos);
@@ -20,7 +21,7 @@ class Pedido{
 
 
     /**
-     * Get the value of id
+     * Get de la variable id
      */ 
     public function getId()
     {
@@ -28,7 +29,7 @@ class Pedido{
     }
 
     /**
-     * Set the value of id
+     * Set de la variable id
      *
      * @return  self
      */ 
@@ -40,7 +41,7 @@ class Pedido{
     }
 
     /**
-     * Get the value of usuarioId
+     * Get de la variable usuarioId
      */ 
     public function getUsuarioId()
     {
@@ -48,7 +49,7 @@ class Pedido{
     }
 
     /**
-     * Set the value of usuarioId
+     * Set de la variable usuarioId
      *
      * @return  self
      */ 
@@ -60,15 +61,15 @@ class Pedido{
     }
 
     /**
-     * Get the value of fecha
-     */ 
+     * Get de la variable fecha
+     */  
     public function getFecha()
     {
         return $this->fecha;
     }
 
     /**
-     * Set the value of fecha
+     * Set de la variable fecha
      *
      * @return  self
      */ 
@@ -80,7 +81,7 @@ class Pedido{
     }
 
      /**
-     * Get the value of productos
+     * Get de la variable productos
      */ 
     public function getProductos()
     {
@@ -88,7 +89,7 @@ class Pedido{
     }
 
     /**
-     * Set the value of productos
+     * Set de la variable fecha
      *
      * @return  self
      */ 

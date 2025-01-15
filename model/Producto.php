@@ -21,7 +21,7 @@ abstract class Producto{
     }
 
     /**
-     * Get the value of id
+     * Get de la variable id
      */ 
     public function getId()
     {
@@ -29,10 +29,10 @@ abstract class Producto{
     }
 
     /**
-     * Set the value of id
+     * Set de la variable id
      *
      * @return  self
-     */ 
+     */  
     public function setId($id)
     {
         $this->id = $id;
@@ -41,7 +41,7 @@ abstract class Producto{
     }
 
     /**
-     * Get the value of nombre
+     * Get de la variable nombre
      */ 
     public function getNombre()
     {
@@ -49,7 +49,7 @@ abstract class Producto{
     }
 
     /**
-     * Set the value of nombre
+     * Set de la variable nombre
      *
      * @return  self
      */ 
@@ -61,15 +61,15 @@ abstract class Producto{
     }
 
     /**
-     * Get the value of descripcion
-     */ 
+     * Get de la variable descripción
+     */  
     public function getDescripcion()
     {
         return $this->descripcion;
     }
 
     /**
-     * Set the value of descripcion
+     * Set de la variable descripción
      *
      * @return  self
      */ 
@@ -81,7 +81,7 @@ abstract class Producto{
     }
 
     /**
-     * Get the value of precio
+     * Get de la variable precio
      */ 
     public function getPrecio()
     {
@@ -89,7 +89,7 @@ abstract class Producto{
     }
 
     /**
-     * Set the value of precio
+     * Set de la variable precio
      *
      * @return  self
      */ 
@@ -101,15 +101,15 @@ abstract class Producto{
     }
 
     /**
-     * Get the value of stock
-     */ 
+     * Get de la variable stock
+     */  
     public function getStock()
     {
         return $this->stock;
     }
 
     /**
-     * Set the value of stock
+     * Set de la variable stock
      *
      * @return  self
      */ 

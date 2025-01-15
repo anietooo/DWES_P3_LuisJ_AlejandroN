@@ -1,5 +1,4 @@
 <?php
-// filepath: /c:/Users/zonag/Desktop/fp/DAW/2ºAÑO/PHP/DWES_P3_LuisJ_AlejandroN/PaginaPedido.php
 session_start();
 include_once("./database/conexion.php");
 include_once("./database/productoDB.php");
@@ -59,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['vaciar_cesta'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
-    // Insertar el pedido en la base de datos
+    //En caso de que se compre, se insertara el pedido en la bdd
     $pedido = new Pedido(null, $email, new DateTime(), $_SESSION['productos'][$email]);
     insertarPedido($pedido);
 
@@ -83,6 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
             height: 100vh;
         }
 
+        /* Grid para definir como salen los pedidos por pantalla */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -106,6 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
         <div class="product-grid">
             <?php
             if (isset($_SESSION['productos'][$email])) {
+                //Se recorren todos los productos y se sacan por pantalla mediante echo
                 foreach ($_SESSION['productos'][$email] as $producto) {
                     echo '<div class="card">';
                     echo '<div class="card-body">';
@@ -113,6 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
                     echo '<input type="hidden" name="id" value="' . $producto['id'] . '">';
                     echo '<button type="submit" name="eliminar_producto" class="btn btn-danger btn-sm" style="position: absolute; top: -5px; right: 10px;">X</button>';
                     echo '</form>';
+                    //Acceso a nombre, descripción, precio y stock de cada producto para sacarlo en la card
                     echo '<h5 class="card-title">' . $producto['nombre'] . '</h5>';
                     echo '<p class="card-text">' . $producto['descripcion'] . '</p>';
                     echo '<p class="card-text">Precio: ' . $producto['precio'] . '€</p>';
@@ -123,6 +125,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
             }
             ?>
         </div>
+        <!--
+         Si has añadido algún producto a la cesta(PaginaPedido.php) entonces
+         se verá por pantalla este form con 2 botones, uno para comprar y otro
+         para vaciar la cesta por completo
+        -->
         <?php if (isset($_SESSION['productos'][$email]) && count($_SESSION['productos'][$email]) > 0): ?>
             <form action="PaginaPedido.php" method="post" class="mt-3">
                 <button type="submit" name="comprar" class="btn btn-outline-primary">Comprar</button>

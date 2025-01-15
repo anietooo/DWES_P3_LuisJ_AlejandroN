@@ -18,7 +18,7 @@ class Usuario{
     }
 
     /**
-     * Get the value of email
+     * Get de la variable email
      */ 
     public function getEmail()
     {
@@ -26,10 +26,10 @@ class Usuario{
     }
 
     /**
-     * Set the value of email
+     * Set de la variable email
      *
      * @return  self
-     */ 
+     */  
     public function setEmail($email)
     {
         $this->email = $email;
@@ -38,18 +38,18 @@ class Usuario{
     }
 
     /**
-     * Get the value of nombre
-     */ 
+     * Get de la variable nombre
+     */  
     public function getNombre()
     {
         return $this->nombre;
     }
 
     /**
-     * Set the value of nombre
+     * Set de la variable nombre
      *
      * @return  self
-     */ 
+     */  
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
@@ -58,7 +58,7 @@ class Usuario{
     }
 
     /**
-     * Get the value of password
+     * Get de la variable password
      */ 
     public function getPassword()
     {
@@ -66,10 +66,10 @@ class Usuario{
     }
 
     /**
-     * Set the value of password
+     * Set de la variable password
      *
      * @return  self
-     */ 
+     */  
     public function setPassword($password)
     {
         $this->password = $password;

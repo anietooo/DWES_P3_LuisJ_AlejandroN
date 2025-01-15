@@ -10,21 +10,24 @@ class Periferico extends Producto{
         $this->marca = $marca;
     }
 
+    /**
+     * Metodo toString() con herencia
+     */
     public function __toString()
     {
         return parent::__toString() . ", Tipo: $this->tipo , Marca: $this->marca";
     }
 
     /**
-     * Get the value of tipo
-     */ 
+     * Get de la variable tipo
+     */  
     public function getTipo()
     {
         return $this->tipo;
     }
 
     /**
-     * Set the value of tipo
+     * Set de la variable tipo
      *
      * @return  self
      */ 
@@ -37,7 +40,7 @@ class Periferico extends Producto{
     
 
     /**
-     * Get the value of marca
+     * Get de la variable marca
      */ 
     public function getMarca()
     {
@@ -45,7 +48,7 @@ class Periferico extends Producto{
     }
 
     /**
-     * Set the value of marca
+     * Set de la variable marca
      *
      * @return  self
      */ 

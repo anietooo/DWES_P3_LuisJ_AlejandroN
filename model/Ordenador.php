@@ -8,13 +8,16 @@ class Ordenador extends Producto{
         $this->ram = $ram;
     }
 
+    /**
+     * Metodo toString() con herencia
+     */
     public function __toString()
     {
         return parent::__toString() . ", Ram: $this->ram";
     }
 
     /**
-     * Get the value of ram
+     * Get de la variable ram
      */ 
     public function getRam()
     {
@@ -22,7 +25,7 @@ class Ordenador extends Producto{
     }
 
     /**
-     * Set the value of ram
+     * Set de la variable ram
      *
      * @return  self
      */ 

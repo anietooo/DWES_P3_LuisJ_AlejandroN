@@ -21,9 +21,9 @@ require_once("./views/header.php");
   <link rel="stylesheet" href="./views/index.css">
   <style>
     .zoom-text:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease-in-out;
-}
+      transform: scale(1.1);
+      transition: transform 0.3s ease-in-out;
+    }
   </style>
 </head>
 
@@ -34,11 +34,13 @@ require_once("./views/header.php");
       <div class="col-12">
         <nav class="d-flex justify-content-center align-items-center zoom-text">
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <!-- Botones de abajo (Indicadores) -->
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
+            <!-- Imagenes del carousel-->
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img src="./views/img/Banner_Pagina.jpg" class="d-block w-100 img-fluid" alt="...">
@@ -52,6 +54,7 @@ require_once("./views/header.php");
                 </a>
               </div>
             </div>
+            <!-- Botones de control del carousel -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
@@ -73,6 +76,7 @@ require_once("./views/header.php");
         <hr>
       </div>
     </div>
+    <!-- Galería de Productos Destacados -->
     <div class="row d-flex justify-content-center mt-4">
       <div class="gallery d-flex justify-content-center align-items-center flex-wrap gap-3">
         <!-- Producto 1 -->
@@ -142,19 +146,24 @@ require_once("./views/header.php");
     <div class="row h-25 mt-5">
       <div class="col-12">
         <h2 class="text-center">¿Por qué comprar?</h2>
+        <!-- Cajitas de por qué comprar con iconos -->
         <div class="d-flex flex-wrap justify-content-center gap-3 mt-5 ">
+          <!-- Caja 1 -->
           <div class="bg-light p-4 text-center zoom-text" style="width: 280px;">
             <i class="fa-solid fa-rotate-right fa-2x"></i>
             <p class="fs-5 mt-3">14 días de desistimiento</p>
           </div>
+          <!-- Caja 2 -->
           <div class="bg-light p-4 text-center zoom-text" style="width: 280px;">
             <i class="fas fa-home fa-2x"></i>
             <p class="fs-5 mt-3">Envío gratuito</p>
           </div>
+          <!-- Caja 3 -->
           <div class="bg-light p-4 text-center zoom-text" style="width: 280px;">
             <i class="fa-regular fa-envelope fa-2x"></i>
             <p class="fs-5 mt-3">Soporte 24/7</p>
           </div>
+          <!-- Caja 4 -->
           <div class="bg-light p-4 text-center zoom-text" style="width: 280px;">
             <i class="fas fa-phone fa-2x"></i>
             <p class="fs-5 mt-3">Atención telefónica</p>
@@ -165,6 +174,9 @@ require_once("./views/header.php");
     </div>
   </div>
 
+  <!-- Script para que al pasar el cursor por encima de las imagenes
+   aumente la escala y haga una pequeña transición. Al quitar el cursor de
+   encima vuelve como antes -->
   <script>
     document.querySelectorAll('.gallery .img-container').forEach(item => {
       item.addEventListener('mouseover', () => {
@@ -175,8 +187,6 @@ require_once("./views/header.php");
         item.style.transform = 'scale(1)';
       });
     });
-
- 
   </script>
 </body>
 

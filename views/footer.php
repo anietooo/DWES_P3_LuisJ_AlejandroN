@@ -31,24 +31,31 @@
     <div class="container-fluid bg-dark text-white">
         <div class="row">
             <footer class="d-flex justify-content-around mt-2">
+                <!-- Lista Usuario -->
                 <ul class="list-unstyled">
                     <li class="fw-bold">Usuario</li>
                     <li><a class="text-decoration-none text-white linkHover" href="#">Mi cuenta</a></li>
                     <li><a class="text-decoration-none text-white linkHover" href="#">Mis datos</a></li>
                 </ul>
+
+                <!-- Lista Pedido -->
                 <ul class="list-unstyled">
                     <li class="fw-bold boldHover">Pedido</li>
                     <li><a class="text-decoration-none text-white linkHover" href="#">Rastrear mi pedido</a></li>
                     <li><a class="text-decoration-none text-white linkHover" href="#">Mis pedidos</a></li>
                 </ul>
+
+                <!-- Lista Producto -->
                 <ul class="list-unstyled">
                     <li class="fw-bold">Producto</li>
                     <li><a class="text-decoration-none text-white linkHover" href="#">Productos mas comprados</a></li>
                     <li><a class="text-decoration-none text-white linkHover" href="#">Mis productos guardados</a></li>
                 </ul>
+
+                <!-- Lista Comunidad -->
                 <ul class="list-unstyled">
                     <li class="fw-bold">Comunidad</li>
-                    <!--LOGOS-->
+                    <!--LOGOS DE REDES SOCIALES-->
                     <div class="d-flex justify-content-around">
                         <!--LOGO INSTAGRAM-->
                         <li>

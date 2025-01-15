@@ -1,10 +1,13 @@
+Hay que ver si se usan las imagenes con fondo (sino borrarlas)
+EN pedido -----> private ?int $id; (Que es la interrogacion)
+
 CREATE DATABASE DWES_P3_LuisJ_AlejandroN;
 USE DWES_P3_LuisJ_AlejandroN;
 
 CREATE TABLE Usuario (
     email VARCHAR(255) PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    contraseña VARCHAR(255) NOT NULL
+    password1 VARCHAR(255) NOT NULL
 );
 
 
@@ -32,7 +35,7 @@ CREATE TABLE PedidoProducto (
 );
 
 
-SELECT * FROM pedidoproducto;
-SELECT * FROM usuario;
-SELECT * FROM producto;
-SELECT * FROM pedido;
+SELECT * FROM PedidoProducto;
+SELECT * FROM Usuario;
+SELECT * FROM Producto;
+SELECT * FROM Pedido;

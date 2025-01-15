@@ -31,7 +31,7 @@
   <header class="container-fluid bg-primary py-3">
     <!--Row del header-->
     <div class="row">
-      <!--Lista a la izquierda-->
+      <!--Lista a la izquierda del header-->
       <div class="col-12 col-sm-10 mt-3">
         <ul class="list-unstyled d-flex justify-content-center justify-content-sm-start">
           <li class="fs-4 text-white">
@@ -48,20 +48,26 @@
         </ul>
       </div>
   
-      <!--Icono de usuario a la derecha-->
+      <!-- Lista de la derecha con iconos -->
       <div class="col-12 col-sm-2 mt-3">
         <ul class="list-unstyled d-flex justify-content-center justify-content-sm-end">
+        <!--
+         Este php es para que si estas logueado, a la izquierda del
+         icono de usuario salga el correo con el que estas logueado
+        -->
         <?php if (isset($_SESSION['email'])): ?>
             <li class="fs-4 mx-3 text-white d-flex align-items-center">
               <span><?php echo htmlspecialchars($_SESSION['email']); ?></span>
             </li>
           <?php endif; ?>
           <li class="fs-4 mx-3 text-white">
+            <!-- Enlace a Login con icono de persona -->
             <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="/login.php">
               <i class="fa-solid fa-user"></i>
             </a>
           </li>
           <li class="fs-4 mx-3 text-white">
+            <!-- Enlace a PaginaPedido con icono de carrito -->
             <a class="text-decoration-none text-white linkHover d-flex align-items-center" href="./PaginaPedido.php">
               <i class="fa-solid fa-shopping-cart"></i>
             </a>

@@ -8,7 +8,7 @@ function conectar(): mysqli
 {
     $server = "127.0.0.1";  //localhost
     $user = "root";
-    $pass = "root";
+    $pass = "Sandia4you";
     $dbname = "DWES_P3_LuisJ_AlejandroN";
     //$puerto = "3307";
     $conexion = new mysqli($server, $user, $pass, $dbname);

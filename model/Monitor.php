@@ -8,6 +8,9 @@ class Monitor extends Producto{
         $this->hz = $hz;
     }
 
+    /**
+     * Metodo toString() con herencia
+     */
     public function __toString()
     {
         return parent::__toString() . ", Hz: $this->hz";
@@ -15,7 +18,7 @@ class Monitor extends Producto{
 
     
     /**
-     * Get the value of hz
+     * Get de la variable hz
      */ 
     public function getHz()
     {
@@ -23,7 +26,7 @@ class Monitor extends Producto{
     }
 
     /**
-     * Set the value of hz
+     * Set de la variable hz
      *
      * @return  self
      */ 

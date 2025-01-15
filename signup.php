@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 require_once("./views/header.php")
 ?>
 
@@ -14,31 +11,38 @@ include "./database/conexion.php";
 include "./database/usuarioDB.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Securizar los datos
     $nombre = securizar($_POST["nombre"]);
     $email = securizar($_POST["email"]);
     $password1 = securizar($_POST["password1"]);
     $password2 = securizar($_POST["password2"]);
 
+    //Si el nombre no se ha rellenado dará el siguiente error
     if (empty($nombre)) {
         $nombreErr = "Campo obligatorio";
         $errores = true;
     }
 
+    //Si el email no se ha rellenado dará el siguiente error
     if (empty($email)) {
         $emailErr = "Campo obligatorio";
         $errores = true;
     }
 
+    //Si la contraseña no se ha rellenado O la longitud de la contraseña
+    // es menor que 5 dará el siguiente error
     if (empty($password1) || strlen($password1) < 5) {
         $password1Err = "Campo obligatorio , la contraseña debe tener mas de 5 Caracteres";
         $errores = true;
     }
 
+    //Si la contraseña2 no se ha rellenado dará el siguiente error
     if (empty($password2)) {
         $password2Err = "Campo obligatorio";
         $errores = true;
     }
 
+    // Si las contraseñas no coinciden dara el siguiente error
     if ($password1 != $password2) {
         $password1Err = "No coinciden";
         $errores = true;
@@ -49,13 +53,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["email"] = $email;
         $_SESSION["origen"] = "signup";
 
+        //Metodo que crea la tabla en la bdd en caso de que no exista
         crearTabla();
+
+        //Si no existe un usuario con ese email, te redirige a
+        // index y crea el usuario y lo inserta en la bdd con el metodo
+        // insertarUsuario()
         if (!leerUsuario($email)) {
             header("Location: ./index.php");
             $u = new Usuario($email, $nombre, $password1);
             insertarUsuario($u);
             exit();
-        } else {
+        } else { // Si lee el email y ya existe uno con ese email saldra el siguiente error
             $emailErr = "Ya existe un usuario con ese email";
         }
     }
@@ -103,6 +112,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container align-self-center">
         <div class="row">
             <div class="col">
+                <!--
+                 Esto es un breadcrumb para que el usuario sepa donde
+                 se encuentra y facilitar la navegacion en la web.
+                -->
                 <nav class="breadcrumb bg-white">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item bg-white"><a href="./index.php">Inicio</a></li>
@@ -114,10 +127,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <div class="row">
+            <!-- Columna de la izquierda informativo -->
             <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center flex-column  text-white bg-gradient-primary">
                 <h1>Crea tu cuenta<br></h1>
                 <p>Con tu cuenta de usuario podrás: <br><br> Disfrutar de ofertas exclusivas y personalizadas.<br> Acceder a tu historial de compras. <br>Establecer alertas de disponibilidad y nuevos lanzamientos.Compartir tus listas y configuraciones.</p>
             </div>
+            <!-- Columna de la derecha con el formulario de registro -->
             <div class="col-md-6">
                 <form class="border p-4 shadow-sm rounded align-self-center" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 
@@ -126,6 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="text" name="nombre" id="nombre"
                             class=" form-control <?php if (!empty($nombreErr)) echo "is-invalid"; ?>"
                             value="<?php echo htmlspecialchars($nombre); ?>">
+                            <!-- Error -->
                         <div class="invalid-feedback"><?php echo $nombreErr; ?></div>
                     </div>
 
@@ -133,6 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="email">Email:*</label>
                         <input type="email" name="email" id="email" class="form-control <?php if (!empty($emailErr)) echo 'is-invalid'; ?>"
                          value="<?php echo htmlspecialchars($email); ?>">
+                         <!-- Error -->
                         <div class="invalid-feedback"><?php echo $emailErr; ?></div>
                     </div>
 
@@ -140,6 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="form-group">
                         <label for="password1">Contraseña:*</label>
                         <input type="password" name="password1" id="password1" class="form-control <?php if (!empty($password1Err)) echo 'is-invalid'; ?>" value="">
+                        <!-- Error -->
                         <div class="invalid-feedback"><?php echo $password1Err; ?></div>
                     </div>
 
@@ -147,11 +165,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="form-group">
                         <label for="password1">Repetir Contraseña:*</label>
                         <input type="password" name="password2" id="password2" class="form-control <?php if (!empty($password1Err)) echo 'is-invalid'; ?>" value="">
+                        <!-- Error -->
                         <div class="invalid-feedback"><?php echo $password1Err; ?></div>
                     </div>
 
                     <br>
-
+                    <!-- Botones de enviar y de limpiar formulario -->
                     <input class="btn btn-primary" type="submit" value="Enviar">
                     <input class="btn btn-secondary" type="reset" value="Limpiar formulario">
                 </form>
