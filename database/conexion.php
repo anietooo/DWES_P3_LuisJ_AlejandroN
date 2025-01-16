@@ -34,7 +34,8 @@ function crearTabla()
     $sql = "CREATE TABLE IF NOT EXISTS Usuario (
         email VARCHAR(255) PRIMARY KEY,
         nombre VARCHAR(100) NOT NULL,
-        password1 VARCHAR(255) NOT NULL
+        password1 VARCHAR(255) NOT NULL,
+        admin1 TINYINT(1) DEFAULT 0 NOT NULL
     );";
 
     // Ejecutar la consulta y comprobar si hubo algún error

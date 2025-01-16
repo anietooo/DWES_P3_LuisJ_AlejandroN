@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $_SESSION["email"] = $email;
+        $_SESSION['admin1'] = $admin1;
 
         //Verificar si el usuario existe en la base de datos para ver
         // si se puede loguear con el metodo comprobacionLogin()
