@@ -1,9 +1,7 @@
 <?php
 require_once("./views/header.php");
 session_start();
-?>
 
-<?php
 $email = $password1 = "";
 $emailErr = $password1Err = "";
 $errorLogin = "";
@@ -44,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $_SESSION["email"] = $email;
-        $_SESSION['admin1'] = $admin1;
 
         //Verificar si el usuario existe en la base de datos para ver
         // si se puede loguear con el metodo comprobacionLogin()
@@ -53,7 +50,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Si la verificacion es mayor de 0, es decir , es 1 significa que comprobacionLogin
         // ha ido bien y te redirige automaticamente a Index
         if ($verificacion > 0) {
-            header("Location: ./index.php");
+            $usuario = leerUsuario($email); // Obtiene el objeto usuario desde la base de datos
+            if ($usuario->getAdmin1() == 1) {
+                header("Location: ./admin.php");
+            } else {
+                header("Location: ./index.php");
+            }
             exit();
         } elseif ($verificacion == -1) { //Si comprobacionLogin es -1, es decir, que no existe ese correo en la bdd
             // Saldra el siguiente error
@@ -73,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de registro</title>
+    <title>Formulario de login</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
@@ -98,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <!--
              Esto es un breadcrumb para que el usuario sepa donde
-             se encuentra y facilitar la navegacion en la web.
+             se encuentra y facilitar la navegación en la web.
             -->
             <div class="col">
                 <nav class="breadcrumb bg-white">

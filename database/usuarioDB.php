@@ -25,6 +25,10 @@ function insertarUsuario($u)
     $c->close();
 }
 
+function rolUsuario($email){
+    
+}
+
 /**
  * Lee un usuario de la base de datos por su email.
  *
