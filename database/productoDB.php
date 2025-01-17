@@ -98,8 +98,21 @@ function eliminarProducto($id)
     $c = conectar();
     $sql = "DELETE FROM Producto WHERE id = ?";
     $ps = $c->prepare($sql);
+
+    if (!$ps) {
+        die("Error en la preparación de la consulta: " . $c->error);
+    }
+
     $ps->bind_param("i", $id);
+    $resultado = $ps->execute();
+
+    if (!$resultado) {
+        die("Error en la ejecución de la consulta: " . $ps->error);
+    }
+
+    $ps->close();
     $c->close();
-    return $ps->execute();
+
+    return $resultado;
 }
 ?>

@@ -26,27 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($tabla === 'Producto') {
         if ($accion === 'eliminar' && !empty($id)) {
             eliminarProducto((int)$id);
-        } elseif ($accion === 'actualizar' && !empty($id)) {
-            $id = $_POST['id'] ?? '';
-            $nombre = $_POST['nombre'] ?? '';
-            $descripcion = $_POST['descripcion'] ?? '';
-            $precio = $_POST['precio'] ?? 0;
-            $stock = $_POST['stock'] ?? 0;
-            $ram = $_POST['ram'] ?? 0;
-
-            $producto = new Ordenador($id, $nombre, $descripcion,$precio,$stock,$ram);
-            actualizarProducto($producto);
         }
+
     } elseif ($tabla === 'Pedido') {
         if ($accion === 'eliminar' && !empty($id)) {
             eliminarPedido((int)$id); // Asegúrate de tener esta función implementada
-        } elseif ($accion === 'actualizar' && !empty($id)) {
-            $id= $_POST['id'] ?? '';
-            $usuarioId = $_POST['usuarioId'] ?? '';
-            $fecha = $_POST['fecha'] ?? '';
-
-            actualizarPedido($id, $usuarioId, $fecha); // Asegúrate de tener esta función implementada
-        }
+        } 
     }
 
     // Redirigir para evitar reenvío de formularios
@@ -96,13 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <form action='' method='post' style='display:inline;'>
                                 <input type='hidden' name='tabla' value='Pedido'>
                                 <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                <input type='hidden' name='usuarioId' value='" . htmlspecialchars($row['usuarioId']) . "'>
-                                <input type='hidden' name='fecha' value='" . htmlspecialchars($row['fecha']) . "'>
-                                <button type='submit' name='accion' value='actualizar' class='btn btn-primary btn-sm'>Actualizar</button>
-                            </form>
-                            <form action='' method='post' style='display:inline;'>
-                                <input type='hidden' name='tabla' value='Pedido'>
-                                <input type='hidden' name='id' value='" . $row['id'] . "'>
                                 <button type='submit' name='accion' value='eliminar' class='btn btn-danger btn-sm'>Eliminar</button>
                             </form>
                         </td>
@@ -137,14 +115,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td>" . $row['precio'] . "</td>
                         <td>" . $row['stock'] . "</td>
                         <td>
-                            <form action='' method='post' style='display:inline;'>
-                                <input type='hidden' name='tabla' value='Producto'>
-                                <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                <input type='hidden' name='nombre' value='" . htmlspecialchars($row['nombre']) . "'>
-                                <input type='hidden' name='descripcion' value='" . htmlspecialchars($row['descripcion']) . "'>
-                                <input type='hidden' name='precio' value='" . $row['precio'] . "'>
-                                <input type='hidden' name='stock' value='" . $row['stock'] . "'>
-                                <button type='submit' name='accion' value='actualizar' class='btn btn-primary btn-sm'>Actualizar</button>
                             </form>
                             <form action='' method='post' style='display:inline;'>
                                 <input type='hidden' name='tabla' value='Producto'>

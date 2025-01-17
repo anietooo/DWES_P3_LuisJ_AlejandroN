@@ -78,7 +78,7 @@ function actualizarPedido($p)
     $c = conectar();
     $sql = "UPDATE Pedido SET id = ?, usuarioId = ?, fecha = ? WHERE id = ?";
     $ps = $c->prepare($sql);
-    $ps->bind_param("iss", $id, $usuarioId, $fecha);
+    $ps->bind_param("isi", $id, $usuarioId, $fecha);
     $id = $p->getId();
     $usuarioId = $p->getUsuarioId();
     $fecha = $p->getFecha();
@@ -95,10 +95,29 @@ function actualizarPedido($p)
 function eliminarPedido($id)
 {
     $c = conectar();
-    $sql = "DELETE FROM Pedido WHERE id = ?";
-    $ps = $c->prepare($sql);
-    $ps->bind_param("i", $id);
+
+    // Eliminar las relaciones en PedidoProducto (productos asociados al pedido)
+    $sqlDeleteProductos = "DELETE FROM PedidoProducto WHERE idPedido = ?";
+    $psProductos = $c->prepare($sqlDeleteProductos);
+    if (!$psProductos) {
+        die("Error en la preparación de la consulta de eliminación de productos: " . $c->error);
+    }
+    $psProductos->bind_param("i", $id);
+    $resultadoProductos = $psProductos->execute();
+    $psProductos->close();
+
+    // Ahora eliminar el pedido
+    $sqlDeletePedido = "DELETE FROM Pedido WHERE id = ?";
+    $psPedido = $c->prepare($sqlDeletePedido);
+
+    $psPedido->bind_param("i", $id);
+    $resultadoPedido = $psPedido->execute();
+
+    $psPedido->close();
     $c->close();
-    return $ps->execute();
+
+    return $resultadoPedido;
 }
+
+
 ?>
