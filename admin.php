@@ -6,46 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            margin: 20px 0;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-
-        a {
-            text-decoration: none;
-            color: white;
-            background-color: #007bff;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        a:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Pedidos</h1>
-    <table>
+    <div class="container mt5">
+    <h1 class="mb-4">Pedidos</h1>
+    <table class=" table table-responsive table-bordered table-striped">
         <tr>
             <th>Id</th>
             <th>UsuarioId</th>
@@ -76,6 +43,46 @@
         $conn->close();
         ?>
     </table>
+
+    <hr>
+    <h1 class="mb-4">Productos</h1>
+    <table class="table table-responsive table-bordered table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Accion</th>
+        </tr>
+
+        <?php
+        $conn = new mysqli("127.0.0.1", "root", "Sandia4you", "DWES_P3_LuisJ_AlejandroN");
+
+        if ($conn->connect_error) {
+            die("Conexión fallida: " . $conn->connect_error);
+        }
+
+        $stmt = $conn->prepare("SELECT id, nombre, descripcion , precio, stock FROM Producto");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>
+                    <td>" . $row['id'] . "</td>
+                    <td>" . $row['nombre'] . "</td>
+                    <td>" . $row['descripcion'] . "</td>
+                    <td>" . $row['precio'] . "</td>
+                    <td>" . $row['stock'] . "</td>
+                </tr>";
+        }
+
+        $stmt->close();
+        $conn->close();
+        ?>
+    </table>
+    </div>
+    
 </body>
 
 </html>
