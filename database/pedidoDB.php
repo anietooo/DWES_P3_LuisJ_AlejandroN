@@ -78,7 +78,7 @@ function actualizarPedido($p)
     $c = conectar();
     $sql = "UPDATE Pedido SET id = ?, usuarioId = ?, fecha = ? WHERE id = ?";
     $ps = $c->prepare($sql);
-    $ps->bind_param("iii", $id, $usuarioId, $fecha);
+    $ps->bind_param("iss", $id, $usuarioId, $fecha);
     $id = $p->getId();
     $usuarioId = $p->getUsuarioId();
     $fecha = $p->getFecha();
