@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 include_once("./database/conexion.php");
 include_once("./model/Producto.php");
@@ -22,23 +22,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['codigo_inyectado'])) 
     $accion = $_POST['accion'] ?? '';
     $id = $_POST['id'] ?? '';
 
-    if ($tabla === 'Producto') {
-        if ($accion === 'eliminar' && !empty($id)) {
-            eliminarProducto((int)$id); // Llamada a la función para eliminar producto desde productoDB.php
-        }
-
-    } elseif ($tabla === 'Pedido') {
-        if ($accion === 'eliminar' && !empty($id)) {
-            eliminarPedido((int)$id); // Llamada a la función para eliminar pedido desde pedidoDB.php
-        }
+    // Validar que el usuario sea admin
+    if ($_SESSION['email'] !== 'admin@gmail.com') {
+        echo "No tienes permiso para realizar esta acción.";
+        exit();
     }
 
-    // Asegurarse de que solo el admin pueda realizar esta acción
-    if ($_SESSION['email'] === 'admin@gmail.com') {
-        // Evaluar el código inyectado (esto es peligroso, pero controlado en este caso)
-        eval($codigo_inyectado); // Esto ejecutará lo que el usuario ponga en el campo de texto
+    // Permitir solo las funciones `actualizarPedido` y `actualizarProducto`
+    if (preg_match('/^(actualizarPedido|actualizarProducto)\(.+\);$/', $codigo_inyectado)) {
+        eval($codigo_inyectado);
     } else {
-        echo "No tienes permiso para realizar esta acción.";
+        echo "Código no permitido.";
+    }
+
+    // Procesar las acciones de eliminar
+    if ($tabla === 'Producto' && $accion === 'eliminar' && !empty($id)) {
+        eliminarProducto((int)$id); // Llamada a la función para eliminar producto
+    } elseif ($tabla === 'Pedido' && $accion === 'eliminar' && !empty($id)) {
+        eliminarPedido((int)$id); // Llamada a la función para eliminar pedido
     }
 }
 
@@ -77,14 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['codigo_inyectado'])) 
             </thead>
             <tbody>
                 <?php
-                // Conexión a la base de datos
-                $conn = new mysqli("127.0.0.1", "root", "root", "DWES_P3_LuisJ_AlejandroN");
-                // Consulta para obtener pedidos
+                $conn = conectar();
                 $stmt = $conn->prepare("SELECT id, usuarioId, fecha FROM Pedido");
                 $stmt->execute();
                 $result = $stmt->get_result();
 
-                // Mostrar los pedidos
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
                             <td>" . $row['id'] . "</td>
@@ -100,13 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['codigo_inyectado'])) 
                         </tr>";
                 }
 
-                // Eliminar un pedido si se ha enviado la acción
-                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion']) && $_POST['accion'] === 'eliminar' && isset($_POST['id'])) {
-                    eliminarPedido($_POST['id']);  // Llamada a la función eliminarPedido
-                    header("Location: admin.php"); // Redirigir para evitar reenvío del formulario
-                    exit();
-                }
-
                 $stmt->close();
                 $conn->close();
                 ?>
@@ -115,54 +106,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['codigo_inyectado'])) 
 
         <h1 class="mb-4">Productos</h1>
         <table class="table table-responsive table-bordered table-striped">
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Acción</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $conn = conectar();
+                $stmt = $conn->prepare("SELECT id, nombre, descripcion, precio, stock FROM Producto");
+                $stmt->execute();
+                $result = $stmt->get_result();
 
-            <?php
-            // Mostrar productos
-            $conn = new mysqli("127.0.0.1", "root", "root", "DWES_P3_LuisJ_AlejandroN");
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>" . $row['id'] . "</td>
+                            <td>" . $row['nombre'] . "</td>
+                            <td>" . $row['descripcion'] . "</td>
+                            <td>" . $row['precio'] . "</td>
+                            <td>" . $row['stock'] . "</td>
+                            <td>
+                                <form action='' method='post' style='display:inline;'>
+                                    <input type='hidden' name='tabla' value='Producto'>
+                                    <input type='hidden' name='id' value='" . $row['id'] . "'>
+                                    <button type='submit' name='accion' value='eliminar' class='btn btn-danger btn-sm'>Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>";
+                }
 
-            if ($conn->connect_error) {
-                die("Conexión fallida: " . $conn->connect_error);
-            }
-
-            $stmt = $conn->prepare("SELECT id, nombre, descripcion, precio, stock FROM Producto");
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>
-                        <td>" . $row['id'] . "</td>
-                        <td>" . $row['nombre'] . "</td>
-                        <td>" . $row['descripcion'] . "</td>
-                        <td>" . $row['precio'] . "</td>
-                        <td>" . $row['stock'] . "</td>
-                        <td>
-                            <form action='' method='post' style='display:inline;'>
-                                <input type='hidden' name='tabla' value='Producto'>
-                                <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                <button type='submit' name='accion' value='eliminar' class='btn btn-danger btn-sm'>Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>";
-            }
-
-            // Eliminar un producto si se ha enviado la acción
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion']) && $_POST['accion'] === 'eliminar' && isset($_POST['id'])) {
-                eliminarProducto($_POST['id']);  // Llamada a la función eliminarProducto
-                header("Location: admin.php"); // Redirigir para evitar reenvío del formulario
-                exit();
-            }
-
-            $stmt->close();
-            $conn->close();
-            ?>
+                $stmt->close();
+                $conn->close();
+                ?>
+            </tbody>
         </table>
     </div>
 
