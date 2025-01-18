@@ -73,18 +73,34 @@ function leerPedidoCriterio($id)
  * @param Pedido $p El pedido a actualizar.
  * @return void 
  */
-function actualizarPedido($p)
+function actualizarPedido($id, $usuarioId, $fecha)
 {
-    $c = conectar();
-    $sql = "UPDATE Pedido SET id = ?, usuarioId = ?, fecha = ? WHERE id = ?";
+    // Conectar a la base de datos
+    $c = conectar(); // Asegúrate de tener la función de conexión a la base de datos
+    $sql = "UPDATE Pedido SET usuarioId = ?, fecha = ? WHERE id = ?";
     $ps = $c->prepare($sql);
-    $ps->bind_param("isi", $id, $usuarioId, $fecha);
-    $id = $p->getId();
-    $usuarioId = $p->getUsuarioId();
-    $fecha = $p->getFecha();
-    $ps->execute();
+
+    // Verificar si la preparación de la consulta fue exitosa
+    if (!$ps) {
+        die("Error en la preparación de la consulta: " . $c->error);
+    }
+
+    // Vincular los parámetros de la consulta
+    $ps->bind_param("ssi", $usuarioId, $fecha, $id);
+
+    // Ejecutar la consulta
+    if ($ps->execute()) {
+        echo "Pedido actualizado correctamente.";
+    } else {
+        echo "Error al actualizar el pedido: " . $ps->error;
+    }
+
+    // Cerrar la conexión
+    $ps->close();
     $c->close();
 }
+
+
 
 /**
  * Elimina un pedido de la base de datos.

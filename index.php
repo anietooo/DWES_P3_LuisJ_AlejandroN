@@ -179,7 +179,7 @@ require_once("./views/header.php");
    encima vuelve como antes -->
   <script>
     document.querySelectorAll('.gallery .img-container').forEach(item => {
-      item.addEventListener('mouseover', () => {
+      item.addEventListener('mouseover', () => {7
         item.style.transform = 'scale(1.1)';
         item.style.transition = 'transform 0.3s ease-in-out';
       });

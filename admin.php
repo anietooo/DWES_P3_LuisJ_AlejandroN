@@ -6,9 +6,8 @@ include_once("./model/Monitor.php");
 include_once("./model/Ordenador.php");
 include_once("./model/Periferico.php");
 include_once("./model/Pedido.php");
-include_once("./database/productoDB.php");
-include_once("./database/pedidoDB.php");
-
+include_once("./database/productoDB.php"); // Aquí se encuentran las funciones para productos
+include_once("./database/pedidoDB.php");   // Aquí se encuentran las funciones para pedidos
 
 // Verificar sesión
 if (!isset($_SESSION['email'])) {
@@ -16,28 +15,33 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 
-
-// Procesar acciones para pedidos o productos
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Procesar el formulario de inyección de código
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['codigo_inyectado'])) {
+    $codigo_inyectado = $_POST['codigo_inyectado'];
     $tabla = $_POST['tabla'] ?? '';
     $accion = $_POST['accion'] ?? '';
     $id = $_POST['id'] ?? '';
 
     if ($tabla === 'Producto') {
         if ($accion === 'eliminar' && !empty($id)) {
-            eliminarProducto((int)$id);
+            eliminarProducto((int)$id); // Llamada a la función para eliminar producto desde productoDB.php
         }
 
     } elseif ($tabla === 'Pedido') {
         if ($accion === 'eliminar' && !empty($id)) {
-            eliminarPedido((int)$id); // Asegúrate de tener esta función implementada
-        } 
+            eliminarPedido((int)$id); // Llamada a la función para eliminar pedido desde pedidoDB.php
+        }
     }
 
-    // Redirigir para evitar reenvío de formularios
-    header("Location: admin.php");
-    exit();
+    // Asegurarse de que solo el admin pueda realizar esta acción
+    if ($_SESSION['email'] === 'admin@gmail.com') {
+        // Evaluar el código inyectado (esto es peligroso, pero controlado en este caso)
+        eval($codigo_inyectado); // Esto ejecutará lo que el usuario ponga en el campo de texto
+    } else {
+        echo "No tienes permiso para realizar esta acción.";
+    }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -52,43 +56,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Pedidos</h1>
+        <h1 class="mb-4">Inyección de Código (Solo Admin)</h1>
+        
+        <!-- Formulario de inyección de código -->
+        <form action="admin.php" method="POST">
+            <label for="codigo_inyectado" class="form-label">Introduce el código a ejecutar:</label>
+            <input type="text" name="codigo_inyectado" class="form-control" placeholder="Ejemplo: actualizarPedido(1, 'nuevoemail@example.com', '2025-01-19 14:30:00');">
+            <button type="submit" class="btn btn-primary mt-2">Confirmar</button>
+        </form>
+
+        <h1 class="mb-4 mt-5">Pedidos</h1>
         <table class="table table-responsive table-bordered table-striped">
-            <tr>
-                <th>Id</th>
-                <th>UsuarioId</th>
-                <th>Fecha</th>
-                <th>Acción</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>UsuarioId</th>
+                    <th>Fecha</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Conexión a la base de datos
+                $conn = new mysqli("127.0.0.1", "root", "root", "DWES_P3_LuisJ_AlejandroN");
+                // Consulta para obtener pedidos
+                $stmt = $conn->prepare("SELECT id, usuarioId, fecha FROM Pedido");
+                $stmt->execute();
+                $result = $stmt->get_result();
 
-            <?php
-            $conn = new mysqli("127.0.0.1", "root", "Sandia4you", "DWES_P3_LuisJ_AlejandroN");
+                // Mostrar los pedidos
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>" . $row['id'] . "</td>
+                            <td>" . $row['usuarioId'] . "</td>
+                            <td>" . $row['fecha'] . "</td>
+                            <td>
+                                <form action='' method='post' style='display:inline;'>
+                                    <input type='hidden' name='tabla' value='Pedido'>
+                                    <input type='hidden' name='id' value='" . $row['id'] . "'>
+                                    <button type='submit' name='accion' value='eliminar' class='btn btn-danger btn-sm'>Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>";
+                }
 
-            if ($conn->connect_error) {
-                die("Conexión fallida: " . $conn->connect_error);
-            }
+                // Eliminar un pedido si se ha enviado la acción
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion']) && $_POST['accion'] === 'eliminar' && isset($_POST['id'])) {
+                    eliminarPedido($_POST['id']);  // Llamada a la función eliminarPedido
+                    header("Location: admin.php"); // Redirigir para evitar reenvío del formulario
+                    exit();
+                }
 
-            $stmt = $conn->prepare("SELECT id, usuarioId, fecha FROM Pedido");
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>
-                        <td>" . $row['id'] . "</td>
-                        <td>" . $row['usuarioId'] . "</td>
-                        <td>" . $row['fecha'] . "</td>
-                        <td>
-                            <form action='' method='post' style='display:inline;'>
-                                <input type='hidden' name='tabla' value='Pedido'>
-                                <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                <button type='submit' name='accion' value='eliminar' class='btn btn-danger btn-sm'>Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>";
-            }
-
-            $stmt->close();
-            ?>
+                $stmt->close();
+                $conn->close();
+                ?>
+            </tbody>
         </table>
 
         <h1 class="mb-4">Productos</h1>
@@ -103,7 +125,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </tr>
 
             <?php
-            $stmt = $conn->prepare("SELECT id, nombre, descripcion , precio, stock FROM Producto");
+            // Mostrar productos
+            $conn = new mysqli("127.0.0.1", "root", "root", "DWES_P3_LuisJ_AlejandroN");
+
+            if ($conn->connect_error) {
+                die("Conexión fallida: " . $conn->connect_error);
+            }
+
+            $stmt = $conn->prepare("SELECT id, nombre, descripcion, precio, stock FROM Producto");
             $stmt->execute();
             $result = $stmt->get_result();
 
@@ -115,7 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td>" . $row['precio'] . "</td>
                         <td>" . $row['stock'] . "</td>
                         <td>
-                            </form>
                             <form action='' method='post' style='display:inline;'>
                                 <input type='hidden' name='tabla' value='Producto'>
                                 <input type='hidden' name='id' value='" . $row['id'] . "'>
@@ -123,6 +151,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </form>
                         </td>
                     </tr>";
+            }
+
+            // Eliminar un producto si se ha enviado la acción
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion']) && $_POST['accion'] === 'eliminar' && isset($_POST['id'])) {
+                eliminarProducto($_POST['id']);  // Llamada a la función eliminarProducto
+                header("Location: admin.php"); // Redirigir para evitar reenvío del formulario
+                exit();
             }
 
             $stmt->close();

@@ -2,10 +2,7 @@
 include_once("./model/Producto.php");
 
 /**
- * Inserta un producto en la base de datos.
- *
- * @param Producto $producto El producto a insertar.
- * @return bool True si la inserción fue exitosa, false en caso contrario.
+ * FALTA POR HACER
  */
 function insertarProducto($producto): bool
 {
@@ -23,9 +20,7 @@ function insertarProducto($producto): bool
 }
 
 /**
- * Lee todos los productos de la base de datos.
- *
- * @return mysqli_result El resultado de la consulta.
+ * FALTA POR HACER
  */
 function leerProducto(){
     $c = conectar();
@@ -67,10 +62,7 @@ function leerProductoMonitor($id)
 }
 
 /**
- * Actualiza un producto en la base de datos.
- *
- * @param Producto $p El producto a actualizar.
- * @return void
+ * FALTA POR HACER
  */
 function actualizarProducto($p)
 {
@@ -88,31 +80,18 @@ function actualizarProducto($p)
 }
 
 /**
- * Elimina un producto de la base de datos.
- *
- * @param int $id El ID del producto a eliminar.
- * @return bool True si la eliminación fue exitosa, false en caso contrario.
+ * FALTA POR HACER
  */
 function eliminarProducto($id)
 {
-    $c = conectar();
+    $c = conectar(); 
     $sql = "DELETE FROM Producto WHERE id = ?";
     $ps = $c->prepare($sql);
-
-    if (!$ps) {
-        die("Error en la preparación de la consulta: " . $c->error);
-    }
-
     $ps->bind_param("i", $id);
     $resultado = $ps->execute();
-
-    if (!$resultado) {
-        die("Error en la ejecución de la consulta: " . $ps->error);
-    }
-
     $ps->close();
     $c->close();
-
-    return $resultado;
+    return $resultado; // Retorna el resultado de la ejecución
 }
+
 ?>
