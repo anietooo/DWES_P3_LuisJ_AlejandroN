@@ -11,13 +11,13 @@ Ademas podremos gestionar los usuarios (crear, leer, actualizar y eliminar), y r
 
 UML en el siguiente enlace:
 
-![UML](./admin.php) PONER RUTA A IMG DEL PROYECTO
+![UML](./ER.drawio.png)
 
 
 # Modelo Entidad-Relación
 Modelo Entidad Relacion en el siguiente enlace:
 
-![Modelo ER](./admin.php) PONER RUTA A IMG DEL PROYECTO
+![Modelo ER](./UML.drawio.png) PONER RUTA A IMG DEL PROYECTO
 
 
 # Base de datos utilizada:
