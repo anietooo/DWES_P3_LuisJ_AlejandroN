@@ -66,7 +66,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
 
     // Limpiar la sesión después de la compra
     unset($_SESSION['productos'][$email]);
+
+       // Mostrar la alerta con JavaScript y redirigir
+       echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+       echo '<script>';
+       echo 'Swal.fire({ title: "¡Gracias por tu Compra!", text: "El pedido se ha realizado con éxito.", icon: "success", confirmButtonText: "Aceptar" }).then(() => {';
+       echo 'window.location.href = "index.php";';
+       echo '});';
+       echo '</script>';
 }
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -77,6 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina Pedido</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
             display: grid;
@@ -105,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
 
 <body>
     <div class="container mt-5">
-        <div class="product-grid">
+        <div class="product-grid ">
             <?php
             if (isset($_SESSION['productos'][$email])) {
                 //Se recorren todos los productos y se sacan por pantalla mediante echo
@@ -133,8 +145,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
          para vaciar la cesta por completo
         -->
         <?php if (isset($_SESSION['productos'][$email]) && count($_SESSION['productos'][$email]) > 0): ?>
-            <form action="PaginaPedido.php" method="post" class="mt-3">
-                <button type="submit" name="comprar" class="btn btn-outline-primary">Comprar</button>
+            <form action="PaginaPedido.php" method="post" id="comprar" class="mt-3">
+                <button type="submit" name="comprar" id="comprar" class="btn btn-outline-primary">Comprar</button>
                 <button type="submit" name="vaciar_cesta" class="btn btn-danger">Vaciar Cesta</button>
             </form>
         <?php endif; ?>
