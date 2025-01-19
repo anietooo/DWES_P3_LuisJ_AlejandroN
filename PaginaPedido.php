@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);  // 0 - No mostrar errores ni advertencias
+error_reporting(0); 
 include_once("./database/conexion.php");
 include_once("./database/productoDB.php");
 include_once("./database/pedidoDB.php");
@@ -18,11 +18,11 @@ $email = $_SESSION['email'];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
-    $id = $_POST['id'];
-    $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
-    $precio = $_POST['precio'];
-    $stock = $_POST['stock'];
+    $id = securizar($_POST['id']);
+    $nombre =securizar($_POST['nombre']);
+    $descripcion =securizar($_POST['descripcion']);
+    $precio =securizar($_POST['precio']);
+    $stock =securizar($_POST['stock']);
 
 
     // Crear un array con los datos del producto

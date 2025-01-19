@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif ($tabla === 'Pedido') {
         if ($accion === 'eliminar' && !empty($id)) {
-            eliminarPedido((int)$id); // Asegúrate de tener esta función implementada
+            eliminarPedido((int)$id);
         }
     }
 

@@ -27,7 +27,8 @@ function insertarProducto($producto): bool
  *
  * @return mysqli_result El resultado de la consulta.
  */
-function leerProducto(){
+function leerProducto()
+{
     $c = conectar();
     $sql = "SELECT id,nombre, descripcion, precio, stock FROM Producto";
     $r = $c->query($sql);
@@ -35,36 +36,6 @@ function leerProducto(){
     return $r;
 }
 
-/**
- * FALTA POR HACER
- */
-function leerProductoOrdenador($id)
-{
-    $c = conectar();
-    $sql = "SELECT  nombre, descripcion, precio, stock FROM Producto WHERE id = ?";
-    $ps = $c->prepare($sql);
-    $ps->bind_param("i", $id);
-    $ps->execute();
-    $r = $ps->get_result();
-    $r = $r->fetch_assoc();
-    $p = new Ordenador($r["ram"], $r["id"], $r["nombre"], $r["descripcion"], $r["precio"], $r["stock"]);
-    $c->close();
-    return $p;
-}
-
-function leerProductoMonitor($id)
-{
-    $c = conectar();
-    $sql = "SELECT  nombre, descripcion, precio, stock FROM Producto WHERE id = ?";
-    $ps = $c->prepare($sql);
-    $ps->bind_param("i", $id);
-    $ps->execute();
-    $r = $ps->get_result();
-    $r = $r->fetch_assoc();
-    $p = new Monitor($r["hz"], $r["id"], $r["nombre"], $r["descripcion"], $r["precio"], $r["stock"]);
-    $c->close();
-    return $p;
-}
 
 /**
  * Actualiza un producto en la base de datos.
@@ -98,21 +69,10 @@ function eliminarProducto($id)
     $c = conectar();
     $sql = "DELETE FROM Producto WHERE id = ?";
     $ps = $c->prepare($sql);
-
-    if (!$ps) {
-        die("Error en la preparación de la consulta: " . $c->error);
-    }
-
     $ps->bind_param("i", $id);
     $resultado = $ps->execute();
-
-    if (!$resultado) {
-        die("Error en la ejecución de la consulta: " . $ps->error);
-    }
-
     $ps->close();
     $c->close();
 
     return $resultado;
 }
-?>

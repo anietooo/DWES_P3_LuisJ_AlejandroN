@@ -144,15 +144,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="text" name="nombre" id="nombre"
                             class=" form-control <?php if (!empty($nombreErr)) echo "is-invalid"; ?>"
                             value="<?php echo htmlspecialchars($nombre); ?>">
-                            <!-- Error -->
+                        <!-- Error -->
                         <div class="invalid-feedback"><?php echo $nombreErr; ?></div>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email:*</label>
                         <input type="email" name="email" id="email" class="form-control <?php if (!empty($emailErr)) echo 'is-invalid'; ?>"
-                         value="<?php echo htmlspecialchars($email); ?>">
-                         <!-- Error -->
+                            value="<?php echo htmlspecialchars($email); ?>">
+                        <!-- Error -->
                         <div class="invalid-feedback"><?php echo $emailErr; ?></div>
                     </div>
 

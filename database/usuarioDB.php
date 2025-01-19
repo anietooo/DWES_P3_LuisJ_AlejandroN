@@ -25,6 +25,13 @@ function insertarUsuario($u)
     $c->close();
 }
 
+
+/**
+ * Verifica Si el Usuario es Administrador.
+ *
+ * @param Usuario $email El email a verificar.
+ * @return void
+ */
 function verificarAdmin($email)
 {
     // Verificar si el usuario es administrador

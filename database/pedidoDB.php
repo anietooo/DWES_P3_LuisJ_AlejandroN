@@ -47,25 +47,6 @@ function leerPedido()
     return $r;
 }
 
-/**
- * Lee un pedido de la base de datos por su ID.
- *
- * @param int $id El ID del pedido a leer.
- * @return Pedido|null El pedido leído o null si no se encontró.
- */
-function leerPedidoCriterio($id)
-{
-    $c = conectar();
-    $sql = "SELECT * FROM Pedido WHERE id = ?";
-    $ps = $c->prepare($sql);
-    $ps->bind_param("i", $id);
-    $ps->execute();
-    $r = $ps->get_result();
-    $r = $r->fetch_assoc();
-    $p = new Pedido($r["id"], $r["usuarioId"], $r["fecha"], $r["productos"]);
-    $c->close();
-    return $p;
-}
 
 /**
  * Actualiza un pedido en la base de datos.
@@ -95,21 +76,16 @@ function actualizarPedido($p)
 function eliminarPedido($id)
 {
     $c = conectar();
-
-    // Eliminar las relaciones en PedidoProducto (productos asociados al pedido)
+    // Eliminar las relaciones en PedidoProducto
     $sqlDeleteProductos = "DELETE FROM PedidoProducto WHERE idPedido = ?";
     $psProductos = $c->prepare($sqlDeleteProductos);
-    if (!$psProductos) {
-        die("Error en la preparación de la consulta de eliminación de productos: " . $c->error);
-    }
     $psProductos->bind_param("i", $id);
     $resultadoProductos = $psProductos->execute();
     $psProductos->close();
 
-    // Ahora eliminar el pedido
+    //eliminar el pedido
     $sqlDeletePedido = "DELETE FROM Pedido WHERE id = ?";
     $psPedido = $c->prepare($sqlDeletePedido);
-
     $psPedido->bind_param("i", $id);
     $resultadoPedido = $psPedido->execute();
 

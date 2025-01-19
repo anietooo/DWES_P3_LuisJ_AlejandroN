@@ -10,7 +10,6 @@ include "./database/conexion.php";
 include "./database/usuarioDB.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //Securizar los datos
     $email = securizar($_POST["email"]);
     $password1 = securizar($_POST["password1"]);
 
@@ -27,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errores = true;
     }
 
-    //Si no hay errores...
+    //Si no hay errores
     if (!$errores) {
         //Se establecen las cookies
         if (isset($_POST["conectado"])) {

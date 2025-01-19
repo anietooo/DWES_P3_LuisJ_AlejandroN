@@ -25,7 +25,6 @@ require_once("./model/Periferico.php");
 
         iframe {
             display: none;
-            /* Oculta el iframe */
         }
 
         .product-grid {
@@ -64,8 +63,7 @@ require_once("./model/Periferico.php");
 
 <body>
     <!--
-     Inserción de los productos en la bdd, estan comentados porque lo ejecutamos una vez y ya para
-     que no se duplique
+    Se deben Comentar las Insercciones una vez ya ejecutadas para que no se dupliquen los productos
     -->
     <?php
     //insertarProducto(new Ordenador(8, 1, "HP EliteDesk 800 G1", "Potente productividad:Esta Ordenador Portátil con Win 11 de 14 pulgadas está equipada con el rendimiento del procesador", 500, 100));
