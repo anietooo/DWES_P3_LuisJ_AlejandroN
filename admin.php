@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once("./database/conexion.php");
+include_once("./database/usuarioDB.php");
 include_once("./model/Producto.php");
 include_once("./model/Monitor.php");
 include_once("./model/Ordenador.php");
@@ -16,25 +17,13 @@ if (!isset($_SESSION['email'])) {
 }
 
 // Conexión a la base de datos
-$conn = new mysqli("127.0.0.1", "root", "root", "DWES_P3_LuisJ_AlejandroN");
+$conn = conectar();
 
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Verificar si el usuario es administrador
-$email = $_SESSION['email'];
-$stmt = $conn->prepare("SELECT admin1 FROM Usuario WHERE email = ?");
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows === 0 || $result->fetch_assoc()['admin1'] <= 0) {
-    // Si admin1 es 0 o no existe, denegar acceso
-    echo "<h1>Acceso denegado</h1>";
-    echo "<p>No tienes permisos para acceder a esta página.</p>";
-    exit();
-}
+verificarAdmin($_SESSION['email']);
 
 // Procesar acciones para pedidos o productos
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -80,9 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </tr>
 
             <?php
-            $stmt = $conn->prepare("SELECT id, usuarioId, fecha FROM Pedido");
-            $stmt->execute();
-            $result = $stmt->get_result();
+            $result=leerPedido();
 
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
@@ -99,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </tr>";
             }
 
-            $stmt->close();
+            
             ?>
         </table>
 
@@ -115,9 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </tr>
 
             <?php
-            $stmt = $conn->prepare("SELECT id, nombre, descripcion , precio, stock FROM Producto");
-            $stmt->execute();
-            $result = $stmt->get_result();
+            $result=leerProducto();
 
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
@@ -136,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </tr>";
             }
 
-            $stmt->close();
+     
             $conn->close();
             ?>
         </table>
