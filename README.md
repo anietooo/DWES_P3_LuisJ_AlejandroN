@@ -6,6 +6,10 @@ La aplicación web será una plataforma de gestión para una empresa de ordenado
 Permitirá a los usuarios registrados explorar un catálogo de Ordenadores.
 Ademas podremos gestionar los usuarios (crear, leer, actualizar y eliminar), y realizar operaciones básicas de administración. El sistema incluirá un registro e inicio de sesión para los usuarios y tambien hemos creado un usuario que podra desde la web eliminar Pedidos y Productos.
 
+# TENER EN CUENTA:
+Los productos se hacen mediante Insercion Manual en ![paginaProducto](./PaginaProducto.php) si se ha ejecutado una vez hay que comentarlo para evitar posibles errores de productos duplicados.
+En ![signup](./signup.php) hay que Insertar manualmente una vez al Usuario Administrador una vez se ha ejecutado hay que comentarlo.
+
 
 # Modelo de Datos (UML de Clases)
 
@@ -17,7 +21,7 @@ UML en el siguiente enlace:
 # Modelo Entidad-Relación
 Modelo Entidad Relacion en el siguiente enlace:
 
-![Modelo ER](./UML.drawio.png) PONER RUTA A IMG DEL PROYECTO
+![Modelo ER](./UML.drawio.png) 
 
 
 # Base de datos utilizada:

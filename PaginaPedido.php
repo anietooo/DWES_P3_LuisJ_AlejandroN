@@ -76,6 +76,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comprar'])) {
        echo '</script>';
 }
 
+//COMPROBACION DE QUE FUNCIONA LA FUNCION DE MODIFICAR PEDIDO:
+//actualizarPedido(new Pedido(1, 1, new DateTime(), []));")
+
 
 
 

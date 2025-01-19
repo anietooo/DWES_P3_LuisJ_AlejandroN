@@ -73,8 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = '';
 }
 //AÑADIR ADMIN
-//$admin = new Usuario("admin@gmail.com","AdminTienda","admin123456",1);
-//insertarUsuario($admin);
+//COMENTAR UNA VEZ EJECTUADO
+$admin = new Usuario("admin@gmail.com", "AdminTienda", "admin123456", 1);
+insertarUsuario($admin);
 ?>
 <!DOCTYPE html>
 <html lang="en">
