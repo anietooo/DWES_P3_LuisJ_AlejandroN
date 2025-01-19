@@ -9,13 +9,32 @@ include_once("./model/Pedido.php");
 include_once("./database/productoDB.php");
 include_once("./database/pedidoDB.php");
 
-
 // Verificar sesión
 if (!isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
 }
 
+// Conexión a la base de datos
+$conn = new mysqli("127.0.0.1", "root", "root", "DWES_P3_LuisJ_AlejandroN");
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Verificar si el usuario es administrador
+$email = $_SESSION['email'];
+$stmt = $conn->prepare("SELECT admin1 FROM Usuario WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 0 || $result->fetch_assoc()['admin1'] <= 0) {
+    // Si admin1 es 0 o no existe, denegar acceso
+    echo "<h1>Acceso denegado</h1>";
+    echo "<p>No tienes permisos para acceder a esta página.</p>";
+    exit();
+}
 
 // Procesar acciones para pedidos o productos
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,11 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($accion === 'eliminar' && !empty($id)) {
             eliminarProducto((int)$id);
         }
-
     } elseif ($tabla === 'Pedido') {
         if ($accion === 'eliminar' && !empty($id)) {
             eliminarPedido((int)$id); // Asegúrate de tener esta función implementada
-        } 
+        }
     }
 
     // Redirigir para evitar reenvío de formularios
@@ -62,12 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </tr>
 
             <?php
-            $conn = new mysqli("127.0.0.1", "root", "root", "DWES_P3_LuisJ_AlejandroN");
-
-            if ($conn->connect_error) {
-                die("Conexión fallida: " . $conn->connect_error);
-            }
-
             $stmt = $conn->prepare("SELECT id, usuarioId, fecha FROM Pedido");
             $stmt->execute();
             $result = $stmt->get_result();
@@ -115,7 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td>" . $row['precio'] . "</td>
                         <td>" . $row['stock'] . "</td>
                         <td>
-                            </form>
                             <form action='' method='post' style='display:inline;'>
                                 <input type='hidden' name='tabla' value='Producto'>
                                 <input type='hidden' name='id' value='" . $row['id'] . "'>
