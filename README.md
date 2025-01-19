@@ -48,7 +48,7 @@ SELECT * FROM pedido;
 
 ----------------------------------------
 
-Modelo de Datos (UML de Clases)
+# Modelo de Datos (UML de Clases)
 
 Usuario (Usuario): Representa a un usuario registrado en la aplicación.
 Producto (Producto): Representa un componente o accesorio informático en la tienda.
@@ -75,7 +75,7 @@ Modelo Entidad Relacion en el siguiente enlace:
 --------------------------------------
 
 
-POO:
+# POO:
 Producto-clase Abstracta
 -Ordenador-ram
 -Monitor-hercios
