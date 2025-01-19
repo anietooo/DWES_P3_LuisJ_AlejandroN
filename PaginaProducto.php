@@ -55,10 +55,10 @@ require_once("./model/Periferico.php");
         }
 
         .product-item-btn-animation:hover {
-        background-color: #f0f0f0;
-        transform: scale(1.05);
-        transition: all 0.3s ease;
-    }
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 
@@ -183,6 +183,36 @@ require_once("./model/Periferico.php");
                 } else {
                     item.classList.remove('visible');
                 }
+            });
+        });
+
+        // Seleccionar todos los botones de "Añadir producto"
+        const botonesProductos = document.querySelectorAll('.product-item button');
+
+        botonesProductos.forEach(boton => {
+            boton.addEventListener('click', (event) => {
+                // Verificar si el botón ya está marcado como "seleccionado"
+                if (boton.dataset.seleccionado === "true") {
+                    Swal.fire({
+                        title: 'Producto duplicado',
+                        text: 'Este producto ya ha sido añadido al carrito.',
+                        icon: 'warning',
+                        confirmButtonText: 'Aceptar'
+                    });
+                    event.preventDefault(); // Detener el clic
+                    return;
+                }
+
+                // Marcar el botón como "seleccionado"
+                boton.dataset.seleccionado = "true";
+
+                // Mostrar alerta de éxito
+                Swal.fire({
+                    title: '¡Producto añadido!',
+                    text: 'El producto se ha añadido al carrito correctamente.',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
             });
         });
     </script>

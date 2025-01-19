@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </tr>
 
             <?php
-            $conn = new mysqli("127.0.0.1", "root", "Sandia4you", "DWES_P3_LuisJ_AlejandroN");
+            $conn = new mysqli("127.0.0.1", "root", "root", "DWES_P3_LuisJ_AlejandroN");
 
             if ($conn->connect_error) {
                 die("Conexión fallida: " . $conn->connect_error);

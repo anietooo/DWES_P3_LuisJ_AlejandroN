@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);  // 0 - No mostrar errores ni advertencias
 include_once("./database/conexion.php");
 include_once("./database/productoDB.php");
 include_once("./database/pedidoDB.php");
@@ -14,6 +15,7 @@ if (!isset($_SESSION['email'])) {
 }
 
 $email = $_SESSION['email'];
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
     $id = $_POST['id'];
